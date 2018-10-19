@@ -11,6 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.master');
+use Illuminate\Support\Facades\Route;
+
+Route::get('/test', function (){
+   return view('categories.create');
 });
+
+Route::group(['prefix' => 'home'], function (){
+   Route::get('/', 'CategoryController@index')->name('categories_index');
+
+   Route::get('/create-category', 'CategoryController@create')->name('category_create');
+
+   Route::post('/add-category', 'CategoryController@store')->name('category_store');
+
+   Route::get('/edit-category/{id}','CategoryController@edit')->name('category_edit');
+
+   Route::post('/update-category/{id}','CategoryController@update')->name('category_update');
+
+   Route::get('/delete-category/{id}','CategoryController@destroy')->name('category_destroy');
+});
+
