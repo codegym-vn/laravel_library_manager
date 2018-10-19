@@ -30,3 +30,4 @@ Route::group(['prefix' => 'home'], function (){
 
    Route::get('/delete-category/{id}','CategoryController@destroy')->name('category_destroy');
 });
+
