@@ -13,10 +13,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/test', function (){
-   return view('categories.create');
-});
-
 
 Route::prefix('auther')->group(function () {
     Route::get('/index', 'AuthersController@index')->name('auther.index');
@@ -32,7 +28,7 @@ Route::prefix('auther')->group(function () {
     Route::get('/{id}/destroy', 'AuthersController@destroy')->name('auther.destroy');
 });
 
-Route::group(['prefix' => 'home'], function (){
+Route::group(['prefix' => 'admin'], function (){
     Route::get('/', 'CategoryController@index')->name('categories_index');
 
    Route::get('/create-category', 'CategoryController@create')->name('category_create');
