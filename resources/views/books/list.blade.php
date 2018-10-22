@@ -17,7 +17,8 @@
                         <form class="form-inline my-2 my-lg-0" id="search1" action="{{ route('book_search') }}">
                             <div class="row">
                                 <div class="col-9">
-                                    <input class="form-control mr-sm-2" type="text" style="margin-left: 90px" name="searchBook"
+                                    <input class="form-control mr-sm-2" type="text" style="margin-left: 90px"
+                                           name="searchBook"
                                            placeholder="Search">
                                 </div>
                                 <div class="col-3">
@@ -46,7 +47,7 @@
                             <th>Description</th>
                             <th>Quantity</th>
                             <th>image</th>
-                            <th>Id_Category</th>
+                            <th>Category</th>
                             <th>Id_Author</th>
                         </tr>
                         </thead>
@@ -57,6 +58,7 @@
                             </tr>
                         @else
                             @foreach($books as $key => $book)
+                                {{--{{ dd($book->category) }}--}}
                                 <tr>
                                     <th scope="row">{{ ++$key }}</th>
                                     <td>{{ $book->name }}</td>
@@ -70,7 +72,7 @@
                                             {{'Chưa có ảnh'}}
                                         @endif
                                     </td>
-                                    <td>{{ $book->id_category }}</td>
+                                    <td>{{ $book->category->name }}</td>
                                     <td>
                                         <a href="{{ route('book_edit', $book->id) }}" class="btn"><i
                                                 class="fas fa-feather"></i></a>
@@ -92,7 +94,6 @@
                             </button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

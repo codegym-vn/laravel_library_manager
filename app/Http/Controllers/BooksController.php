@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -17,9 +18,9 @@ class BooksController extends Controller
      */
     public function index ()
     {
-        $category = Category::all();
+        $categories = Category::all();
         $books = Book::paginate(3);
-        return view('books.list', compact('books', 'category'));
+        return view('books.list', compact('books', 'categories'));
     }
 
     /**

@@ -19,7 +19,8 @@ class CreateBooksTable extends Migration
             $table->string('description');
             $table->integer('quantity');
             $table->string('image');
-            $table->integer('id_category');
+            $table->integer('id_category')->unsigned();
+            $table->foreign('id_category')->references('id')->on('categories');
             $table->integer('id_author');
             $table->timestamps();
         });
