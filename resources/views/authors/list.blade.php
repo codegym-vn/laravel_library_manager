@@ -39,30 +39,30 @@
                                     <td colspan="4">Không có dữ liệu</td>
                                 </tr>
                             @else
-                                @foreach($authers as $key => $auther)
+                                @foreach($authors as $key => $author)
                                     <tr>
                                         <th scope="row" style="text-align: center">{{ ++$key }}</th>
-                                        <td style="text-align: center">{{ $auther->name }}</td>
-                                        <td style="text-align: center">{{ $auther->dob }}</td>
-                                        <td style="text-align: center">{{ $auther->address }}</td>
+                                        <td style="text-align: center">{{ $author->name }}</td>
+                                        <td style="text-align: center">{{ $author->dob }}</td>
+                                        <td style="text-align: center">{{ $author->address }}</td>
                                         <td style="text-align: center">
-                                            @if($auther->image)
-                                                <img src="{{ asset('storage/' . $auther->image) }}" alt="" style="width: 200px;">
+                                            @if($author->image)
+                                                <img src="{{ asset('storage/' . $author->image) }}" alt="" style="width: 200px;">
                                             @else
                                                 {{'Chưa có ảnh'}}
                                             @endif
                                         </td>
-                                        <td>
-                                            <a href="{{ route('auther_edit', $auther->id) }}" class="btn"><i class="fas fa-feather"></i></a>
-                                            <a href="{{ route('auther_destroy', $auther->id) }}" class="text-danger"
-                                               onclick="return confirm('Bạn chắc chắn muốn xóa?')"><i class="fas fa-trash-alt"></i></a>
-                                        </td>
+                                        {{--<td>--}}
+                                            {{--<a href="{{ route('auther_edit', $author->id) }}" class="btn"><i class="fas fa-feather"></i></a>--}}
+                                            {{--<a href="{{ route('auther_destroy', $author->id) }}" class="text-danger"--}}
+                                               {{--onclick="return confirm('Bạn chắc chắn muốn xóa?')"><i class="fas fa-trash-alt"></i></a>--}}
+                                        {{--</td>--}}
                                     </tr>
                                 @endforeach
                             @endif
                             </tbody>
                         </table>
-                        {{ $authers->links() }}
+                        {{ $authors->links() }}
                         {{--<a class="btn btn-secondary" href="{{ route('category_create') }}">Thêm mới</a>--}}
                     </div>
                 </div>

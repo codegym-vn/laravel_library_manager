@@ -58,6 +58,18 @@
                     </div>
                 </div>
                 <hr>
+                <hr>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                        <a id="button1" class="btn bg-light">Quản lý Author</a>
+                        <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu" style="width: 235px">
+                        <a class="dropdown-item" href="{{ route('author_index') }}">List Book</a>
+                        <a class="dropdown-item" href="{{ route('book_create') }}">Create</a>
+                    </div>
+                </div>
+                <hr>
             </div>
             <div class="col-md-10 ">
                 @yield('content')

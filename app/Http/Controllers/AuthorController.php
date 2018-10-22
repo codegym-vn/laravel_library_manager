@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Storage;
 class AuthorController extends Controller
 {
     public function index(){
-        $authers = Author::paginate(5);
-        return view('authers.list', compact('authers'));
+        $authors = Author::paginate(5);
+        return view('authors.list', compact('authors'));
     }
 
     public function create(){
-        return view('authers.create');
+        return view('authors.create');
     }
 
     public function store(Request $request){
@@ -38,7 +38,7 @@ class AuthorController extends Controller
 
     public function edit($id){
         $auther = Author::findOrFail($id);
-        return view('authers.edit', compact('auther'));
+        return view('authors.edit', compact('auther'));
     }
 
     public function update(Request $request, $id)

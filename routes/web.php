@@ -14,18 +14,18 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::prefix('auther')->group(function () {
-    Route::get('/index', 'AuthorController@index')->name('auther.index');
+Route::prefix('authors')->group(function () {
+    Route::get('/', 'AuthorController@index')->name('author_index');
 
-    Route::post('/create', 'AuthorController@create')->name('auther.create');
+    Route::get('/create', 'AuthorController@create')->name('author_create');
 
-    Route::get('/create', 'AuthorController@store')->name('auther.store');
+    Route::post('/create', 'AuthorController@store')->name('author_store');
 
-    Route::get('/{id}/edit', 'AuthorController@edit')->name('auther.edit');
+    Route::get('/{id}/edit', 'AuthorController@edit')->name('author_edit');
 
-    Route::post('/{id}/edit', 'AuthorController@update')->name('auther.update');
+    Route::post('/{id}/edit', 'AuthorController@update')->name('author_update');
 
-    Route::get('/{id}/destroy', 'AuthorController@destroy')->name('auther.destroy');
+    Route::get('/{id}/destroy', 'AuthorController@destroy')->name('author_destroy');
 });
 
 Route::group(['prefix' => 'admin'], function (){
