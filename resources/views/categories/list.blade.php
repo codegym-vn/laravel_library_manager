@@ -8,11 +8,28 @@
         <div class="container">
             <div class="col-12">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-4">
                         <br>
                         <h1>Categories Table:</h1>
-                        <hr>
                     </div>
+                    <div class="col-8">
+                        <br>
+                        <div class="container-fluid">
+                            <form class="form-inline my-2 my-lg-0" id="search1" action="#">
+                                <div class="row">
+                                    <div class="col-9.5">
+                                        <input class="form-control mr-sm-2" type="text" name="searchBook"
+                                               placeholder="Search">
+                                    </div>
+                                    <div class="col-2.5">
+                                        <button class="btn btn-outline-dark my-4 my-sm-0" type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-12">
                         @if (Session::has('success'))
                             <p class="text-success">
@@ -43,17 +60,26 @@
                                         <td>{{ $category->id }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>
-                                            <a href="{{ route('category_edit', $category->id) }}" class="btn"><i class="fas fa-feather"></i></a>
+                                            <a href="{{ route('category_edit', $category->id) }}" class="btn"><i
+                                                    class="fas fa-feather"></i></a>
                                             <a href="{{ route('category_destroy', $category->id) }}" class="text-danger"
-                                               onclick="return confirm('Bạn chắc chắn muốn xóa?')"><i class="fas fa-trash-alt"></i></a>
+                                               onclick="return confirm('Bạn chắc chắn muốn xóa?')"><i
+                                                    class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
                             @endif
                             </tbody>
                         </table>
-                        {{ $categories->links() }}
-                        {{--<a class="btn btn-secondary" href="{{ route('category_create') }}">Thêm mới</a>--}}
+                        <div class="row">
+                            <div class="col-11">
+                                {{ $categories->appends(request()->query()) }}
+                            </div>
+                            <div class="col-1">
+                                <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Back
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
