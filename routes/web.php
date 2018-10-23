@@ -13,27 +13,24 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/test', function (){
-   return view('categories.create');
+
+Route::prefix('authors')->group(function () {
+    Route::get('/', 'AuthorController@index')->name('author_index');
+
+    Route::get('/create', 'AuthorController@create')->name('author_create');
+
+    Route::post('/create', 'AuthorController@store')->name('author_store');
+
+    Route::get('/{id}/edit', 'AuthorController@edit')->name('author_edit');
+
+    Route::post('/{id}/edit', 'AuthorController@update')->name('author_update');
+
+    Route::get('/{id}/destroy', 'AuthorController@destroy')->name('author_destroy');
+
 });
 
-
-Route::prefix('auther')->group(function () {
-    Route::get('/index', 'AuthersController@index')->name('auther.index');
-
-    Route::post('/create', 'AuthersController@create')->name('auther.create');
-
-    Route::get('/create', 'AuthersController@store')->name('auther.store');
-
-    Route::get('/{id}/edit', 'AuthersController@edit')->name('auther.edit');
-
-    Route::post('/{id}/edit', 'AuthersController@update')->name('auther.update');
-
-    Route::get('/{id}/destroy', 'AuthersController@destroy')->name('auther.destroy');
-});
-
-Route::group(['prefix' => 'home'], function (){
-   Route::get('/', 'CategoryController@index')->name('categories_index');
+Route::group(['prefix' => 'categories'], function (){
+    Route::get('/', 'CategoryController@index')->name('categories_index');
 
    Route::get('/create-category', 'CategoryController@create')->name('category_create');
 
@@ -45,3 +42,22 @@ Route::group(['prefix' => 'home'], function (){
 
    Route::get('/delete-category/{id}','CategoryController@destroy')->name('category_destroy');
 });
+
+Route::group(['prefix' => 'books'], function (){
+   Route::get('/','BooksController@index')->name('books_index');
+
+   Route::get('/create-book','BooksController@create')->name('book_create');
+
+   Route::post('/add-book','BooksController@store')->name('book_store');
+
+   Route::get('/edit-book/{id}','BooksController@edit')->name('book_edit');
+
+   Route::post('/update-book/{id}','BooksController@update')->name('book_update');
+
+   Route::get('/delete-book/{id}','BooksController@destroy')->name('book_destroy');
+
+   Route::get('/search-book','BooksController@searchBook')->name('book_search');
+
+   Route::get('/filterBy-book','BooksController@filterBy')->name('book_filterBy');
+});
+

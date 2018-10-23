@@ -8,40 +8,58 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
           integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 
+
 </head>
 <style type="text/css">
     #button1 {
         width: 12em;
     }
 
-    #search1 {
-        margin-left: 55%;
-    }
+
+
 </style>
 <body>
 <div class="container-fluid">
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" >
         <!-- Brand/logo -->
         <a class="navbar-brand" href="#">
             <img src="{{ asset('image1/logo1.png') }}" alt="logo" style="width:250px;">
         </a>
-        <form class="form-inline my-2 my-lg-0" id="search1" action="#">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-        </form>
     </nav>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2 bg-secondary" style="height: 900px">
+            <div class="col-md-2 bg-secondary" style="min-height: 900px; max-height: 100%; text-align: center">
+`                <hr>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                        <a id="button1" class="btn bg-light">Quản lý sách</a>
+                        <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu" style="width: 235px">
+                        <a class="dropdown-item" href="{{ route('books_index') }}">List Books</a>
+                        <a class="dropdown-item" href="{{ route('book_create') }}">Create</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="btn-group" >
+                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                        <a id="button1" class="btn bg-light" >Quản lý thể loại</a>
+                        <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu" style="width: 235px" >
+                        <a class="dropdown-item" href="{{ route('categories_index') }}">List Categories</a>
+                        <a class="dropdown-item" href="{{ route('category_create') }}">Create</a>
+                    </div>
+                </div>
                 <hr>
                 <div class="btn-group">
                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                        <a id="button1" class="btn bg-light">Quản lý các loại sách</a>
+                        <a id="button1" class="btn bg-light">Quản lý Author</a>
                         <span class="caret"></span>
                     </button>
-                    <div class="dropdown-menu" style="width: 280px">
-                        <a class="dropdown-item" href="{{ route('categories_index') }}">List Categories</a>
-                        <a class="dropdown-item" href="{{ route('category_create') }}">Create</a>
+                    <div class="dropdown-menu" style="width: 235px">
+                        <a class="dropdown-item" href="{{ route('author_index') }}">List Authors</a>
+                        <a class="dropdown-item" href="{{ route('author_create') }}">Create</a>
                     </div>
                 </div>
                 <hr>
