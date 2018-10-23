@@ -26,6 +26,7 @@ Route::prefix('authors')->group(function () {
     Route::post('/{id}/edit', 'AuthorController@update')->name('author_update');
 
     Route::get('/{id}/destroy', 'AuthorController@destroy')->name('author_destroy');
+
 });
 
 Route::group(['prefix' => 'categories'], function (){

@@ -116,8 +116,9 @@ class BooksController extends Controller
     public function edit ($id)
     {
         $categories = Category::all();
+        $authors = Author::all();
         $book = Book::FindOrFail($id);
-        return view('books.edit', compact('book', 'categories'));
+        return view('books.edit', compact('book', 'categories', 'authors'));
     }
 
     /**
@@ -134,6 +135,7 @@ class BooksController extends Controller
         $book->description = $request->input('description');
         $book->quantity = $request->input('quantity');
         $book->id_category = $request->input('id_category');
+        $book->id_author = $request->input('id_author');
 
         //cap nhap anh
         if ($request->hasFile('image')) {

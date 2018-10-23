@@ -15,9 +15,6 @@
         width: 12em;
     }
 
-    #search1 {
-        margin-left: 55%;
-    }
 
 
 </style>
@@ -31,7 +28,7 @@
     </nav>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2 bg-secondary" style="min-height: 900px; max-height: 100%">
+            <div class="col-md-2 bg-secondary" style="min-height: 900px; max-height: 100%; text-align: center">
 `                <hr>
                 <div class="btn-group">
                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
@@ -44,12 +41,12 @@
                     </div>
                 </div>
                 <hr>
-                <div class="btn-group">
+                <div class="btn-group" >
                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                        <a id="button1" class="btn bg-light">Quản lý các loại sách</a>
+                        <a id="button1" class="btn bg-light" >Quản lý thể loại</a>
                         <span class="caret"></span>
                     </button>
-                    <div class="dropdown-menu" style="width: 235px">
+                    <div class="dropdown-menu" style="width: 235px" >
                         <a class="dropdown-item" href="{{ route('categories_index') }}">List Categories</a>
                         <a class="dropdown-item" href="{{ route('category_create') }}">Create</a>
                     </div>
