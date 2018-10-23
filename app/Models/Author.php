@@ -4,13 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Author extends Model
 {
-    protected $table = 'categories';
+    protected $table = 'authors';
 
-    public function books(){
-
+    public function books () {
         return $this->hasMany('App\Models\Book');
-
     }
 }
