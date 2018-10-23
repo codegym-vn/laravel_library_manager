@@ -14,7 +14,7 @@
                         <hr>
                     </div>
                     <div class="col-12">
-                        <form method="post" action="{{ route('auther_update', $auther->id) }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('author_update', $author->id) }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="inputTitle">Authers name</label>
@@ -22,7 +22,7 @@
                                        class="form-control"
                                        id="inputName"
                                        name="inputName"
-                                       value="{{ $auther->name }}"
+                                       value="{{ $author->name }}"
                                        required>
                             </div>
                             <div class="form-group">
@@ -30,7 +30,7 @@
                                 <input type="date" class="form-control"
                                        id="inputDob"
                                        name="inputDob"
-                                       value="{{ $auther->dob }}"
+                                       value="{{ $author->dob }}"
                                        required>
                             </div>
                             <div class="form-group">
@@ -39,7 +39,7 @@
                                        id="inputAddress"
                                        name="inputAddress"
                                        rows="3"
-                                       value="{{ $auther->address }}"
+                                       value="{{ $author->address }}"
                                        required>
                             </div>
                             <div class="form-group">

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Categories
+    Author
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-12">
                         <br>
-                        <h1>Auther Table:</h1>
+                        <h1>Author Table:</h1>
                         <hr>
                     </div>
                     <div class="col-12">
@@ -34,7 +34,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @if(count($authers) == 0)
+                            @if(count($authors) == 0)
                                 <tr>
                                     <td colspan="4">Không có dữ liệu</td>
                                 </tr>
@@ -47,16 +47,17 @@
                                         <td style="text-align: center">{{ $author->address }}</td>
                                         <td style="text-align: center">
                                             @if($author->image)
-                                                <img src="{{ asset('storage/' . $author->image) }}" alt="" style="width: 200px;">
+                                                <img src="{{ asset('storage/' . $author->image) }}" alt="" style="width: 150px; height: 200px">
                                             @else
                                                 {{'Chưa có ảnh'}}
                                             @endif
                                         </td>
-                                        {{--<td>--}}
-                                            {{--<a href="{{ route('auther_edit', $author->id) }}" class="btn"><i class="fas fa-feather"></i></a>--}}
-                                            {{--<a href="{{ route('auther_destroy', $author->id) }}" class="text-danger"--}}
-                                               {{--onclick="return confirm('Bạn chắc chắn muốn xóa?')"><i class="fas fa-trash-alt"></i></a>--}}
-                                        {{--</td>--}}
+                                        <td style="text-align: center">
+                                            <a href="{{ route('author_edit', $author->id) }}" class="btn"><i class="fas fa-feather"></i></a>
+                                            <hr>
+                                            <a href="{{ route('author_destroy', $author->id) }}" class="text-danger btn"
+                                               onclick="return confirm('Bạn chắc chắn muốn xóa?')"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endif

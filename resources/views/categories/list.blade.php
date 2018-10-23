@@ -42,9 +42,9 @@
                         <table class="table table-bordered">
                             <thead>
                             <tr class="bg-secondary">
-                                <th>STT</th>
-                                <th>ID</th>
-                                <th>Category Name</th>
+                                <th style="text-align: center">STT</th>
+                                <th style="text-align: center">ID</th>
+                                <th style="text-align: center">Category Name</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -56,10 +56,10 @@
                             @else
                                 @foreach($categories as $key => $category)
                                     <tr>
-                                        <th scope="row">{{ ++$key }}</th>
-                                        <td>{{ $category->id }}</td>
-                                        <td>{{ $category->name }}</td>
-                                        <td>
+                                        <th scope="row" style="text-align: center">{{ ++$key }}</th>
+                                        <td style="text-align: center">{{ $category->id }}</td>
+                                        <td style="text-align: center">{{ $category->name }}</td>
+                                        <td style="text-align: center">
                                             <a href="{{ route('category_edit', $category->id) }}" class="btn"><i
                                                     class="fas fa-feather"></i></a>
                                             <a href="{{ route('category_destroy', $category->id) }}" class="text-danger"

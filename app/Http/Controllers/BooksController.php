@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -18,9 +19,39 @@ class BooksController extends Controller
      */
     public function index ()
     {
+        $books = Book::orderBy('name', 'asc')->paginate(3);
+        $authors = Author::all();
         $categories = Category::all();
-        $books = Book::paginate(3);
-        return view('books.list', compact('books', 'categories'));
+        return view('books.list', compact('books', 'authors', 'categories'));
+    }
+
+    public function filterBy (Request $request)
+    {
+        $idAuthor = $request->input('author');
+        $idCategory = $request->input('category');
+
+        $authorFilter = Author::find($idAuthor);
+        $categoryFilter = Category::find($idCategory);
+
+        //dieu kien de loc sach
+        if ($authorFilter && !$categoryFilter) {
+            $books = Book::where('id_author', $authorFilter->id)->orderBy('name', 'asc')->paginate(2);
+            $totalBookFilter = count($books);
+        } else if (!$authorFilter && $categoryFilter){
+            $books = Book::where('id_category', $categoryFilter->id)->orderBy('name', 'asc')->paginate(2);
+            $totalBookFilter = count($books);
+        } else if ($authorFilter && $categoryFilter){
+            $books = Book::where('id_author', $authorFilter->id)->where('id_category', $categoryFilter->id)->orderBy('name', 'asc')->paginate(2);
+            $totalBookFilter = count($books);
+        } else if (!$authorFilter && !$categoryFilter) {
+            Session::flash('success', 'Hãy nhập dữ liệu cần tìm!');
+        }
+
+
+        $authors = Author::all();
+        $categories = Category::all();
+
+        return view('books.list', compact( 'books','authors', 'totalBookFilter', 'authorFilter', 'categoryFilter', 'categories'));
     }
 
     /**
@@ -31,7 +62,8 @@ class BooksController extends Controller
     public function create ()
     {
         $categories = Category::all();
-        return view('books.create', compact('categories'));
+        $authors = Author::all();
+        return view('books.create', compact('categories', 'authors'));
     }
 
     /**

@@ -28,7 +28,7 @@ Route::prefix('authors')->group(function () {
     Route::get('/{id}/destroy', 'AuthorController@destroy')->name('author_destroy');
 });
 
-Route::group(['prefix' => 'admin'], function (){
+Route::group(['prefix' => 'categories'], function (){
     Route::get('/', 'CategoryController@index')->name('categories_index');
 
    Route::get('/create-category', 'CategoryController@create')->name('category_create');
@@ -56,4 +56,6 @@ Route::group(['prefix' => 'books'], function (){
    Route::get('/delete-book/{id}','BooksController@destroy')->name('book_destroy');
 
    Route::get('/search-book','BooksController@searchBook')->name('book_search');
+
+   Route::get('/filterBy-book','BooksController@filterBy')->name('book_filterBy');
 });

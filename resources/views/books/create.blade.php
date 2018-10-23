@@ -23,12 +23,18 @@
 
                             <div class="form-group">
                                 <label>Description</label>
-                                <input type="text" class="form-control" name="description" placeholder="Enter description" required>
+                                <textarea class="form-control"
+                                          id="description"
+                                          name="description"
+                                          placeholder="Enter description"
+                                          rows="3"
+                                          required></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label>Quantity</label>
-                                <input type="text" class="form-control" name="quantity" placeholder="Enter quantity" required>
+                                <input type="text" class="form-control" name="quantity" placeholder="Enter quantity"
+                                       required>
                             </div>
                             <div class="form-group">
                                 <label for="sel1">Category</label>
@@ -41,7 +47,9 @@
                             <div class="form-group">
                                 <label for="sel1">Select list:</label>
                                 <select class="form-control" id="sel1" name="id_author">
-                                    <option value="1">1</option>
+                                    @foreach($authors as $author)
+                                        <option value="{{ $author->id }}">{{ $author->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
