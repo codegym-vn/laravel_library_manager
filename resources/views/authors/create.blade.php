@@ -10,14 +10,14 @@
                 <div class="row">
                     <div class="col-12">
                         <br>
-                        <h1>Add New Auther</h1>
+                        <h1>Add New Author</h1>
                         <hr>
                     </div>
                     <div class="col-12">
-                        <form method="post" action="{{ route('auther_store') }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('author_store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="inputTitle">Authers name</label>
+                                <label for="inputTitle">Author name</label>
                                 <input type="text"
                                        class="form-control"
                                        id="inputName"
@@ -25,14 +25,14 @@
                                        required>
                             </div>
                             <div class="form-group">
-                                <label for="inputContent">Authers DOB</label>
+                                <label for="inputContent">Author DOB</label>
                                 <input type="date" class="form-control"
-                                          id="inputDob"
-                                          name="inputDob"
-                                          required>
+                                       id="inputDob"
+                                       name="inputDob"
+                                       required>
                             </div>
                             <div class="form-group">
-                                <label for="inputContent">Authers Address</label>
+                                <label for="inputContent">Author Address</label>
                                 <textarea class="form-control"
                                           id="inputAddress"
                                           name="inputAddress"
@@ -40,15 +40,10 @@
                                           required></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="inputFileName">File Name</label>
-                                <input type="text"
-                                       class="form-control"
-                                       id="inputFileName"
-                                       name="inputFileName">
                                 <input type="file"
                                        class="form-control-file"
-                                       id="inputFile"
-                                       name="inputFile">
+                                       id="image"
+                                       name="image">
                             </div>
                             <button type="submit" class="btn btn-secondary">Thêm mới</button>
                             <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Hủy
