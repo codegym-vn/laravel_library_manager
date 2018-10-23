@@ -33,6 +33,11 @@ class BooksController extends Controller
         $authorFilter = Author::find($idAuthor);
         $categoryFilter = Category::find($idCategory);
 
+        if (!$authorFilter && !$categoryFilter) {
+            Session::flash('success', 'Hãy nhập dữ liệu cần tìm!');
+            return redirect()->route('books_index');
+        }
+
         //dieu kien de loc sach
         if ($authorFilter && !$categoryFilter) {
             $books = Book::where('id_author', $authorFilter->id)->orderBy('name', 'asc')->paginate(2);
@@ -43,8 +48,6 @@ class BooksController extends Controller
         } else if ($authorFilter && $categoryFilter){
             $books = Book::where('id_author', $authorFilter->id)->where('id_category', $categoryFilter->id)->orderBy('name', 'asc')->paginate(2);
             $totalBookFilter = count($books);
-        } else if (!$authorFilter && !$categoryFilter) {
-            Session::flash('success', 'Hãy nhập dữ liệu cần tìm!');
         }
 
 
