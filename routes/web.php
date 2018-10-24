@@ -63,6 +63,7 @@ Route::group(['prefix' => 'books'], function (){
 
 
 
+
 Route::get('/check-student', function () {
    return view('bills.studentCode');
 })->name('student_check');
@@ -80,3 +81,16 @@ Route::group(['prefix' => 'bills'], function (){
 
 
 
+Route::group(['prefix' => 'student'], function (){
+    Route::get('/','StudentController@index')->name('student_index');
+
+    Route::get('/{id}/books', 'StudentController@category_list_book')->name('student_category_book');
+
+    Route::get('/author','StudentController@list_author')->name('student_author_list');
+
+    Route::get('/{id}/details-book','StudentController@details_book')->name('student_details_book');
+
+    Route::get('/search', 'StudentController@search')->name('student_search');
+
+    Route::get('/{id}/author-list-book', 'StudentController@author_list_book')->name('student_author_book');
+});
