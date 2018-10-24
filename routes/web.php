@@ -60,3 +60,23 @@ Route::group(['prefix' => 'books'], function (){
 
    Route::get('/filterBy-book','BooksController@filterBy')->name('book_filterBy');
 });
+
+
+
+Route::get('/check-student', function () {
+   return view('bills.studentCode');
+})->name('student_check');
+
+Route::group(['prefix' => 'bills'], function (){
+    Route::get('/', 'BillController@index')->name('bills_index');
+
+    Route::post('/add-bill', 'BillController@store')->name('bill_store');
+
+    Route::get('/check-student', 'BillController@authentication')->name('authentication');
+
+    Route::get('/delete-bill/{id}', 'BillController@destroy')->name('bill_destroy');
+
+});
+
+
+
