@@ -1,10 +1,17 @@
 .nav-item a{
     color: #fff;
 }
+
+.nav-item a:hover {
+    color: orangered;
+}
 /*Big-Banner*/
 .book-news{
-    background-color: rgb(243, 244, 247);;
+    background-color: rgb(243, 244, 247);
 
+}
+.book-news h5{
+    margin-top: 10px;
 }
 .content-banner{
     margin-bottom: 20px;
@@ -305,4 +312,11 @@ ul.scial{
     color: #0ebeff;
     margin-bottom: 20px;
     border-bottom: 1px dashed #b9bbbe;
+}
+/* căn chỉnh thẻ a*/
+.a_point_card {
+    color: black;
+}
+.a_point_card:hover{
+    text-decoration: none;
 }
