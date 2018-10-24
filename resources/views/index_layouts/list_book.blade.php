@@ -17,7 +17,7 @@
                                         <a href="{{ route('student_details_book', $book->id) }}" class="a_point_card">
                                             <img src="{{ asset('storage/' . $book->image) }}">
                                         </a>
-                                        <span style="margin-left: 15%"><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span>
+                                        <p style="text-align: center"><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span></p>
                                         <a href="{{ route('student_details_book', $book->id) }}" class="a_point_card">
                                             <p style="text-align: center">{{ $book->name }}</p>
                                         </a>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-3 book-news">
-                <h5>Featured books</h5>
+                <h5>Có thể bạn muốn đọc</h5>
                 @foreach($books_featured as $key => $book)
                     <div class="book-news-1">
                         <div class="row">
