@@ -16,7 +16,7 @@
 <body>
     <div class="menu" style="margin-bottom: 20px">
         <header>
-            <nav class="navbar navbar-expand-lg bg-primary">
+            <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(39, 40, 130);">
                 <a class="navbar-brand" href="{{ route('student_index') }}"><img src="{{ asset('image1/logo1.png') }}" alt="logo" style="width: 70%"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,17 +24,14 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('student_index') }}">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ route('student_index') }}">Sách <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('student_index') }}">Books</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('student_author_list') }}">Authors</a>
+                            <a class="nav-link" href="{{ route('student_author_list') }}">Tác giả</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Categories
+                                Thể loại
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 @foreach($categories as $key => $category)
@@ -55,11 +52,9 @@
         <div class="row content">
             @yield('body-content')
         </div>
-        <div class="container-fluid footer1">
-            <div class="inner-sec py-md-5 py-3">
-                <div class="row mb-md-4 mb-md-3">
-                    <div class="col-lg-3 col-md-6 social-info text-left">
-                        <h3 class="tittle1 foot mb-md-5 mb-4 text-white">Get in touch</h3>
+        <div class="row footer1">
+                    <div class="col-lg-3 col-md-6 social-info text-left" style="padding-left: 20px">
+                        <h3 class="tittle1 foot mb-md-5 mb-4 text-white" style="margin-top: 20px">Giáo vụ</h3>
                         <p>Codegym Building </p>
                         <p class="my-2"> Hà Nội, VN</p>
                         <p class="phone">phone:  +84.979.131.592</p>
@@ -70,12 +65,12 @@
 
                     </div>
                     <div class="col-lg-3 col-md-6 social-info text-left">
-                        <h3 class="tittle1 foot mb-md-5 mb-4 text-white">About Us</h3>
+                        <h3 class="tittle1 foot mb-md-5 mb-4 text-white" style="margin-top: 20px">Về Codegym</h3>
                         <p>CodeGym đào tạo lập trình viên chuyên nghiệp theo phương pháp huấn luyện thực chiến trong thời gian ngắn, thực hành liên tục và cường độ cao với mục tiêu học viên tốt nghiệp có thể đảm nhận ngay vị trí lập trình viên full-stack tại các công ty.</p>
 
                     </div>
-                    <div class="col-lg-6 col-md-12 n-right tex-left">
-                        <h3 class="tittle1 foot mb-md-5 mb-4 text-white">Subscribe our Newsletter</h3>
+                    <div class="col-lg-6 col-md-12 n-right tex-left" style="width: 80%; float: left">
+                        <h3 class="tittle1 foot mb-md-5 mb-4 text-white" style="margin-top: 20px">Đăng ký theo dõi</h3>
                         <form action="#" method="post">
                             <div class="form-group d-flex">
                                 <input class="form-control" type="email" name="Email" placeholder=" Email Address" required="">
@@ -83,28 +78,22 @@
                             </div>
                         </form>
                     </div>
+        </div>
+            <div class="row" style="background-color: rgb(29, 126, 182) ">
+                <div class="col-sm-12 col-md-8 copyright-8">
+                    <p class="copy-right mt-2" style="text-align: center">© 2018 Subject. All Rights Reserved | Design by
+                        <a href="http://w3layouts.com/"> The-Flash </a>
+                    </p>
+                </div>
+                <div class="col-sm-12 col-md-4 fa-icon">
+                    <ul class="social-icons scial justify-content-end">
+                        <li class="mr-1"><a href="#"><span class="fab fa-facebook-f"></span></a></li>
+                        <li class="mx-1"><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li class="mx-1"><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
+                        <li class="mx-1"><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="copyright py-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-                        <p class="copy-right mt-2">© 2018 Subject. All Rights Reserved | Design by
-                            <a href="http://w3layouts.com/"> The-Flash </a>
-                        </p>
-                    </div>
-                    <div class="col-md-4">
-                        <ul class="social-icons scial justify-content-end">
-                            <li class="mr-1"><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                            <li class="mx-1"><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li class="mx-1"><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                            <li class="mx-1"><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 

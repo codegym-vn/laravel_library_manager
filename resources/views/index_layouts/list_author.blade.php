@@ -9,13 +9,13 @@
             <div class="col-sm-12 col-md-9 banner1">
                 <div class="row content-book-list">
                     <div class="col-md-12">
-                        <h4>Authors</h4>
+                        <h4>Tác giả</h4>
                         <div class="row list-book">
                             @foreach($authors as $key => $author)
                                 <div class="col-sm-12 col-md-2 book">
                                     <div class="border-anh">
                                         <img src="{{ asset('storage/' . $author->image) }}">
-                                        <span style="margin-left: 15%"><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span>
+                                        <p style="text-align: center"><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span></p>
                                         <p style="text-align: center">{{ $author->name }}</p>
                                     </div>
                                 </div>
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-3 book-news">
-                <h5>Featured books</h5>
+                <h5>Có thể bạn muốn đọc</h5>
                 @foreach($books_featured as $key => $book)
                     <div class="book-news-1">
                         <div class="row">
