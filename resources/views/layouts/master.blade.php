@@ -71,6 +71,7 @@
                     <div class="dropdown-menu" style="width: 235px">
                         <a class="dropdown-item" href="{{ route('bills_index') }}">List Bills</a>
                         <a class="dropdown-item" href="{{ route('student_check') }}">Code Authentication</a>
+                        <a class="dropdown-item" href="{{ route('student_list') }}">Bảng học sinh</a>
                     </div>
                 </div>
                 <hr>

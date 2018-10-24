@@ -44,53 +44,64 @@ class BillController extends Controller
     public function store (Request $request)
     {
         $studentInput = $request->input('studentCode');
-        $student = Student::get($studentInput);
-        dd($student);
+        $student = Student::where('student_code',$studentInput)->first();
 
-        if ($studentInput == $student) {
-            $student->quantity_bill = +1;
-            $student->save();
+        if ($student->quantity_bill < 2) {
+            if ($student) {
+                $student->quantity_bill += 1;
+                $student->save();
+
+                $bill = new Bill();
+                $bill->id_book = $request->input('id_book');
+                $bill->id_student = $student->id;
+                $bill->status = "Đang mượn";
+                $bill->borrowed_day = $request->input('borrowed_day');
+                $bill->pay_day = $request->input('pay_day');
+                $bill->save();
+
+                $billDetail = new BillDetail();
+                $billDetail->id_book = $request->input('id_book');
+                $billDetail->id_bill = $bill->id;
+                $billDetail->save();
+            } else {
+                $student = new Student();
+                $student->student_code = $request->input('studentCode');
+                $student->student_name = $request->input('fullname');
+                $student->class_name = $request->input('group');
+                $student->email = $request->input('email');
+                $student->phone = $request->input('phone');
+                $student->quantity_bill = 1;
+                $student->save();
+
+                $bill = new Bill();
+                $bill->id_book = $request->input('id_book');
+                $bill->id_student = $student->id;
+                $bill->status = "Đang mượn";
+                $bill->borrowed_day = $request->input('borrowed_day');
+                $bill->pay_day = $request->input('pay_day');
+                $bill->save();
+
+                $billDetail = new BillDetail();
+                $billDetail->id_book = $request->input('id_book');
+                $billDetail->id_bill = $bill->id;
+                $billDetail->save();
+            }
+
+            Session::flash('success', 'Tạo mới thành công');
+
         } else {
-            $student = new Student();
-            $student->student_code = $request->input('studentCode');
-            $student->student_name = $request->input('fullname');
-            $student->class_name = $request->input('group');
-            $student->email = $request->input('email');
-            $student->phone = $request->input('phone');
-            $student->quantity_bill = 1;
-            $student->save();
+            Session::flash('success', 'Bạn đã mượt vượt quá số lượng sách quy định!');
+            return redirect()->route('student_list');
         }
 
-        $student = new Student();
-        $student->student_code = $request->input('studentCode');
-        $student->student_name = $request->input('fullname');
-        $student->class_name = $request->input('group');
-        $student->email = $request->input('email');
-        $student->phone = $request->input('phone');
-        $student->quantity_bill = 1;
-        $student->save();
-
-        $bill = new Bill();
-        $bill->id_book = $request->input('id_book');
-        $bill->id_student = $student->id;
-        $bill->status = "Đang mượn";
-        $bill->borrowed_day = $request->input('borrowed_day');
-        $bill->pay_day = $request->input('pay_day');
-        $bill->save();
-
-        $billDetail = new BillDetail();
-        $billDetail->id_book = $request->input('id_book');
-        $billDetail->id_bill = $bill->id;
-        $billDetail->save();
-
-        //dung session de dua ra thong bao
-        Session::flash('success', 'Tạo mới thành công');
         return redirect()->route('bills_index');
     }
 
     public function destroy ($id)
     {
         $bill = Bill::FindOrFail($id);
+        
+
         $bill->delete();
 
         //dung session de dua ra thong bao

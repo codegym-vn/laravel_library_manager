@@ -77,10 +77,12 @@ Route::group(['prefix' => 'bills'], function (){
 
     Route::get('/delete-bill/{id}', 'BillController@destroy')->name('bill_destroy');
 
+    Route::get('/list-student', 'StudentController@list')->name('student_list');
+
 });
 
 
-
+//trang hien thi
 Route::group(['prefix' => 'student'], function (){
     Route::get('/','StudentController@index')->name('student_index');
 
