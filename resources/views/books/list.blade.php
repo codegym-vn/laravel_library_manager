@@ -14,20 +14,6 @@
                 <div class="col-8 ">
                     <br>
                     <h1>Books Table:</h1>
-                    {{--<div class="container-fluid">--}}
-                    {{--<form class="form-inline my-2 my-lg-0" id="search1" action="{{ route('book_search') }}">--}}
-                    {{--<div class="row">--}}
-                    {{--<div class="col-9">--}}
-                    {{--<input class="form-control mr-sm-2" type="text" style="margin-left: 90px"--}}
-                    {{--name="searchBook"--}}
-                    {{--placeholder="Search">--}}
-                    {{--</div>--}}
-                    {{--<div class="col-3">--}}
-                    {{--<button class="btn btn-outline-dark my-4 my-sm-0" type="submit">Search</button>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</form>--}}
-                    {{--</div>--}}
                 </div>
             </div>
             <div class="row">
@@ -38,7 +24,6 @@
                             {{ Session::get('success') }}
                         </p>
                     @endif
-
                     @if(isset($totalBookFilter))
                         <span class="text-muted">
                     {{'Tìm thấy' . ' ' . $totalBookFilter . ' '. 'quấn sách:'}}
@@ -192,7 +177,6 @@
                             </div>
                         </div>
                         <!--End-->
-
                     </div>
                     <div class="modal-footer">
                         <button type="submit" id="submitAjax" class="btn btn-primary">Chọn</button>

@@ -16,11 +16,10 @@
     }
 
 
-
 </style>
 <body>
 <div class="container-fluid">
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" >
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand/logo -->
         <a class="navbar-brand" href="#">
             <img src="{{ asset('image1/logo1.png') }}" alt="logo" style="width:250px;">
@@ -29,7 +28,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2 bg-secondary" style="min-height: 900px; max-height: 100%; text-align: center">
-`                <hr>
+                `
+                <hr>
                 <div class="btn-group">
                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                         <a id="button1" class="btn bg-light">Quản lý sách</a>
@@ -41,12 +41,12 @@
                     </div>
                 </div>
                 <hr>
-                <div class="btn-group" >
+                <div class="btn-group">
                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                        <a id="button1" class="btn bg-light" >Quản lý thể loại</a>
+                        <a id="button1" class="btn bg-light">Quản lý thể loại</a>
                         <span class="caret"></span>
                     </button>
-                    <div class="dropdown-menu" style="width: 235px" >
+                    <div class="dropdown-menu" style="width: 235px">
                         <a class="dropdown-item" href="{{ route('categories_index') }}">List Categories</a>
                         <a class="dropdown-item" href="{{ route('category_create') }}">Create</a>
                     </div>
@@ -54,12 +54,24 @@
                 <hr>
                 <div class="btn-group">
                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                        <a id="button1" class="btn bg-light">Quản lý Author</a>
+                        <a id="button1" class="btn bg-light">Quản lý tác giả</a>
                         <span class="caret"></span>
                     </button>
                     <div class="dropdown-menu" style="width: 235px">
                         <a class="dropdown-item" href="{{ route('author_index') }}">List Authors</a>
                         <a class="dropdown-item" href="{{ route('author_create') }}">Create</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                        <a id="button1" class="btn bg-light">Phiếu mượn</a>
+                        <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu" style="width: 235px">
+                        <a class="dropdown-item" href="{{ route('bills_index') }}">List Bills</a>
+                        <a class="dropdown-item" href="{{ route('student_check') }}">Code Authentication</a>
+                        <a class="dropdown-item" href="{{ route('student_list') }}">Bảng học sinh</a>
                     </div>
                 </div>
                 <hr>
