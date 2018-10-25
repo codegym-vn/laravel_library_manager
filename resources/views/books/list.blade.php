@@ -9,11 +9,14 @@
             <div class="row">
                 <div class="col-4">
                     <br>
-                    <h6 class="btn btn-outline-primary" href="" data-toggle="modal" data-target="#cityModal">Choose</h6>
+                    <h6 class="btn btn-outline-primary" href="" data-toggle="modal" data-target="#cityModal">Lọc</h6>
                 </div>
                 <div class="col-8 ">
                     <br>
-                    <h1>Books Table:</h1>
+                    <h1>Danh sách sách</h1>
+                </div>
+                <div class="col-12">
+                    <hr>
                 </div>
             </div>
             <div class="row">
@@ -49,12 +52,12 @@
                         <thead>
                         <tr class="bg-secondary">
                             <th style="text-align: center">STT</th>
-                            <th style="text-align: center">Book Name</th>
-                            <th style="text-align: center">Description</th>
-                            <th style="text-align: center">Quantity</th>
-                            <th style="text-align: center">image</th>
-                            <th style="text-align: center">Category</th>
-                            <th style="text-align: center">Author</th>
+                            <th style="text-align: center">Tên sách</th>
+                            <th style="text-align: center">Tóm tắt nội dung</th>
+                            <th style="text-align: center">Số lương</th>
+                            <th style="text-align: center">Ảnh</th>
+                            <th style="text-align: center">Thể loại</th>
+                            <th style="text-align: center">Tác giả</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -98,7 +101,7 @@
                             {{ $books->appends(request()->query()) }}
                         </div>
                         <div class="col-1">
-                            <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Back
+                            <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Trở lại
                             </button>
                         </div>
                     </div>

@@ -8,16 +8,20 @@
         <div class="container">
             <div class="col-12">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-4">
+                    </div>
+                    <div class="col-8">
                         <br>
-                        <h1>Edit Auther</h1>
+                        <h1>Chỉnh sửa tác giả</h1>
+                    </div>
+                    <div class="col-12">
                         <hr>
                     </div>
                     <div class="col-12">
                         <form method="post" action="{{ route('author_update', $author->id) }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="inputTitle">Authers name</label>
+                                <label for="inputTitle">Tên tác giả</label>
                                 <input type="text"
                                        class="form-control"
                                        id="inputName"
@@ -26,7 +30,7 @@
                                        required>
                             </div>
                             <div class="form-group">
-                                <label for="inputContent">Authers DOB</label>
+                                <label for="inputContent">Ngày sinh</label>
                                 <input type="date" class="form-control"
                                        id="inputDob"
                                        name="inputDob"
@@ -34,7 +38,7 @@
                                        required>
                             </div>
                             <div class="form-group">
-                                <label for="inputContent">Authers Address</label>
+                                <label for="inputContent">Địa chỉ</label>
                                 <input type="text" class="form-control"
                                        id="inputAddress"
                                        name="inputAddress"

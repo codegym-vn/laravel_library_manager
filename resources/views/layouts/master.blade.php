@@ -36,8 +36,8 @@
                         <span class="caret"></span>
                     </button>
                     <div class="dropdown-menu" style="width: 235px">
-                        <a class="dropdown-item" href="{{ route('books_index') }}">List Books</a>
-                        <a class="dropdown-item" href="{{ route('book_create') }}">Create</a>
+                        <a class="dropdown-item" href="{{ route('books_index') }}">Danh sách sách</a>
+                        <a class="dropdown-item" href="{{ route('book_create') }}">Tạo mới sách</a>
                     </div>
                 </div>
                 <hr>
@@ -47,8 +47,8 @@
                         <span class="caret"></span>
                     </button>
                     <div class="dropdown-menu" style="width: 235px">
-                        <a class="dropdown-item" href="{{ route('categories_index') }}">List Categories</a>
-                        <a class="dropdown-item" href="{{ route('category_create') }}">Create</a>
+                        <a class="dropdown-item" href="{{ route('categories_index') }}">Danh sách thể loại</a>
+                        <a class="dropdown-item" href="{{ route('category_create') }}">Tạo mới thể loại</a>
                     </div>
                 </div>
                 <hr>
@@ -58,8 +58,8 @@
                         <span class="caret"></span>
                     </button>
                     <div class="dropdown-menu" style="width: 235px">
-                        <a class="dropdown-item" href="{{ route('author_index') }}">List Authors</a>
-                        <a class="dropdown-item" href="{{ route('author_create') }}">Create</a>
+                        <a class="dropdown-item" href="{{ route('author_index') }}">Danh sách tác giả</a>
+                        <a class="dropdown-item" href="{{ route('author_create') }}">Tạo mới tác giả</a>
                     </div>
                 </div>
                 <hr>
@@ -69,9 +69,9 @@
                         <span class="caret"></span>
                     </button>
                     <div class="dropdown-menu" style="width: 235px">
-                        <a class="dropdown-item" href="{{ route('bills_index') }}">List Bills</a>
-                        <a class="dropdown-item" href="{{ route('student_check') }}">Code Authentication</a>
-                        <a class="dropdown-item" href="{{ route('student_list') }}">Bảng học sinh</a>
+                        <a class="dropdown-item" href="{{ route('bills_index') }}">Danh sách phiếu mượn</a>
+                        <a class="dropdown-item" href="{{ route('student_check') }}">Kiểm tra mã HV</a>
+                        <a class="dropdown-item" href="{{ route('student_list') }}">Danh sách HV mượn sách</a>
                     </div>
                 </div>
                 <hr>
