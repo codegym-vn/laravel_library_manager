@@ -63,7 +63,7 @@ class StudentController extends Controller
     {
         $categories = Category::all();
         $author = Author::findOrFail($id);
-        $books = Book::where('id_category', $id)->get();
+        $books = Book::where('id_author', $id)->get();
         return view('index_layouts.list_book_author_search', compact('categories', 'books', 'author'));
     }
 }

@@ -62,8 +62,6 @@ Route::group(['prefix' => 'books'], function (){
 });
 
 
-
-
 Route::get('/check-student', function () {
    return view('bills.studentCode');
 })->name('student_check');

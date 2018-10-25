@@ -14,9 +14,13 @@
                             @foreach($authors as $key => $author)
                                 <div class="col-sm-12 col-md-2 book">
                                     <div class="border-anh">
-                                        <img src="{{ asset('storage/' . $author->image) }}">
+                                        <a href="{{ route('student_author_book', $author->id) }}" class="a_point_card">
+                                            <img src="{{ asset('storage/' . $author->image) }}">
+                                        </a>
                                         <p style="text-align: center"><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span></p>
-                                        <p style="text-align: center">{{ $author->name }}</p>
+                                        <a href="{{ route('student_author_book', $author->id) }}" class="a_point_card">
+                                            <p style="text-align: center">{{ $author->name }}</p>
+                                        </a>
                                     </div>
                                 </div>
                             @endforeach
