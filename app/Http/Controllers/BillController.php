@@ -25,12 +25,12 @@ class BillController extends Controller
                 return view('bills.bill', compact('student', 'books', 'studentCode'));
             } else {
                 //dung session de dua ra thong bao
-                Session::flash('success', 'Học viên này đã nghỉ học không được phép mượn sách!');
+                Session::flash('error', 'Học viên này đã nghỉ học không được phép mượn sách!');
                 return view('bills.studentCode');
             }
         } catch (\Exception $exception) {
             //dung session de dua ra thong bao
-            Session::flash('success', 'Mã học sinh không đúng, yêu cầu nhập lại!');
+            Session::flash('error', 'Mã học sinh không đúng, yêu cầu nhập lại!');
             return view('bills.studentCode');
         }
     }
@@ -90,7 +90,7 @@ class BillController extends Controller
             Session::flash('success', 'Tạo mới thành công');
 
         } else {
-            Session::flash('success', 'Bạn đã mượt vượt quá số lượng sách quy định!');
+            Session::flash('error', 'Bạn đã mượn vượt quá số lượng sách theo quy định!');
             return redirect()->route('student_list');
         }
 
@@ -99,9 +99,20 @@ class BillController extends Controller
 
     public function destroy ($id)
     {
+        //Tim bil
         $bill = Bill::FindOrFail($id);
-        
+        //tim student
+        $student = Student::FindOrFail($bill->id_student);
 
+        //cap nhap student
+        if($student){
+            $student->quantity_bill -= 1;
+            $student->save();
+        }
+
+        
+        $billDetail = BillDetail::where('id_bill', $bill->id)->first();
+        $billDetail->delete();
         $bill->delete();
 
         //dung session de dua ra thong bao

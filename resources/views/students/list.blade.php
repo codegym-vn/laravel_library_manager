@@ -11,7 +11,10 @@
                 </div>
                 <div class="col-8 ">
                     <br>
-                    <h1>Student Table</h1>
+                    <h1>Danh sách học viên</h1>
+                </div>
+                <div class="col-12">
+                    <hr>
                 </div>
             </div>
             <div class="row">
@@ -20,6 +23,12 @@
                         <p class="text-success">
                             <i class="fa fa-check" aria-hidden="true"></i>
                             {{ Session::get('success') }}
+                        </p>
+                    @endif
+                    @if (Session::has('error'))
+                        <p class="text-danger">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            {{ Session::get('error') }}
                         </p>
                     @endif
                 </div>
@@ -33,7 +42,7 @@
                             <th style="text-align: center">Lớp</th>
                             <th style="text-align: center">Email</th>
                             <th style="text-align: center">Phone</th>
-                            <th style="text-align: center">Số lượng phiếu mượn</th>
+                            <th style="text-align: center">Tổng số phiếu mượn</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -52,9 +61,9 @@
                                     <td style="text-align: center">{{ $student->phone }}</td>
                                     <td style="text-align: center">{{ $student->quantity_bill }}</td>
                                     {{--<td>--}}
-                                        {{--<a href="{{ route('bill_destroy', $student->id) }}" class="text-danger btn"--}}
-                                        {{--onclick="return confirm('Bạn chắc chắn muốn xóa?')"><i--}}
-                                        {{--class="fas fa-trash-alt"></i></a>--}}
+                                    {{--<a href="{{ route('bill_destroy', $student->id) }}" class="text-danger btn"--}}
+                                    {{--onclick="return confirm('Bạn chắc chắn muốn xóa?')"><i--}}
+                                    {{--class="fas fa-trash-alt"></i></a>--}}
                                     {{--</td>--}}
                                 </tr>
                             @endforeach

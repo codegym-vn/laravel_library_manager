@@ -8,9 +8,13 @@
         <div class="container">
             <div class="col-12">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-4">
+                    </div>
+                    <div class="col-8">
                         <br>
-                        <h1>Author Table:</h1>
+                        <h1>Danh sách tác giả</h1>
+                    </div>
+                    <div class="col-12">
                         <hr>
                     </div>
                     <div class="col-12">
@@ -26,10 +30,10 @@
                             <thead>
                             <tr class="bg-secondary">
                                 <th>STT</th>
-                                <th>Auther Name</th>
-                                <th>Auther DOB</th>
-                                <th>Auther Address</th>
-                                <th>Auther Image</th>
+                                <th>Tên tác giả</th>
+                                <th>Ngày sinh</th>
+                                <th>Địa chỉ</th>
+                                <th>Ảnh</th>
                                 <th></th>
                             </tr>
                             </thead>

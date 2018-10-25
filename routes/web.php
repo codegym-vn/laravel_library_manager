@@ -83,7 +83,7 @@ Route::group(['prefix' => 'bills'], function (){
 
 
 //trang hien thi
-Route::group(['prefix' => 'student-index-view'], function (){
+Route::group(['prefix' => 'home'], function (){
     Route::get('/','StudentController@index')->name('student_index');
 
     Route::get('/{id}/books', 'StudentController@category_list_book')->name('student_category_book');

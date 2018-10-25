@@ -12,4 +12,14 @@ class Bill extends Model
     {
         return $this->belongsTo('App\Models\Book', 'id_book');
     }
+
+    public function student ()
+    {
+        return $this->belongsTo('App\Models\Student', 'id_student');
+    }
+
+    public function billDetail ()
+    {
+        return $this->hasOne('App\Models\BillDetail');
+    }
 }
