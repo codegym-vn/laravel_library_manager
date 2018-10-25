@@ -61,7 +61,7 @@ Route::group(['prefix' => 'books'], function (){
    Route::get('/filterBy-book','BooksController@filterBy')->name('book_filterBy');
 });
 
-Route::group(['prefix' => 'student-index-view'], function (){
+Route::group(['prefix' => 'home'], function (){
     Route::get('/','StudentController@index')->name('student_index');
 
     Route::get('/{id}/books', 'StudentController@category_list_book')->name('student_category_book');
