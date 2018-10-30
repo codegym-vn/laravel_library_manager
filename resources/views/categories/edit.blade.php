@@ -24,8 +24,8 @@
                                 <label>Tên thể loại:</label>
                                 <input type="text" class="form-control" name="name" value="{{ $category->name }}" required>
                             </div>
-                            <button type="submit" class="btn btn-secondary">Sửa</button>
-                            <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Hủy
+                            <button type="submit" class="btn btn-primary">Sửa</button>
+                            <button class="btn btn-primary" onclick="window.history.go(-1); return false;">Hủy
                             </button>
                         </form>
                     </div>

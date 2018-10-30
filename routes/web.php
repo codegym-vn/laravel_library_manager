@@ -46,6 +46,8 @@ Route::group(['prefix' => 'categories'], function (){
 Route::group(['prefix' => 'books'], function (){
    Route::get('/','BooksController@index')->name('books_index');
 
+   Route::get('/detail-book/{id}','BooksController@show')->name('book_show');
+
    Route::get('/create-book','BooksController@create')->name('book_create');
 
    Route::post('/add-book','BooksController@store')->name('book_store');
@@ -59,6 +61,7 @@ Route::group(['prefix' => 'books'], function (){
    Route::get('/search-book','BooksController@searchBook')->name('book_search');
 
    Route::get('/filterBy-book','BooksController@filterBy')->name('book_filterBy');
+
 });
 
 
@@ -69,7 +72,7 @@ Route::get('/check-student', function () {
 Route::group(['prefix' => 'bills'], function (){
     Route::get('/', 'BillController@index')->name('bills_index');
 
-    Route::post('/add-bill', 'BillController@store')->name('bill_store');
+    Route::match(['get', 'post'],'/add-bill', 'BillController@store')->name('bill_store');
 
     Route::get('/check-student', 'BillController@authentication')->name('authentication');
 
@@ -94,3 +97,5 @@ Route::group(['prefix' => 'home'], function (){
 
     Route::get('/{id}/author-list-book', 'StudentController@author_list_book')->name('student_author_book');
 });
+
+

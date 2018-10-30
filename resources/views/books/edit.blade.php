@@ -27,8 +27,8 @@
                             </div>
                             <div class="form-group">
                                 <label>Tóm tắt nội dung:</label>
-                                <input type="text" class="form-control" name="description"
-                                       value="{{ $book->description }}">
+                                <textarea type="text" class="form-control" name="description" rows="3"
+                                          value="">{{ $book->description }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Số lương:</label>
@@ -60,7 +60,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Ảnh:</label>
-                                <input type="file" name="image" class="form-control-file">
+                                <input type="file" id="chooseimg" name="image" class="form-control-file"  required>
+                                    <img src="{{ asset('storage/'.$book->image) }}" id="image" style="width: 130px; height: 160px">
                             </div>
                             <button type="submit" class="btn btn-secondary">Sửa</button>
                             <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Hủy

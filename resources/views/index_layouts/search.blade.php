@@ -4,7 +4,7 @@
     <div class="col-md-1">
 
     </div>
-    <div class="col-md-10">
+    <div class="col-md-10 search_content">
         <div class="row content-book-list">
             <h4>Từ khóa bạn cần tìm: {{ $keyword }} </h4>
             <div class="col-md-12">

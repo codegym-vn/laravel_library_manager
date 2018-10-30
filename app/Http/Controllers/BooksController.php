@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Author;
+use App\Models\Bill;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -19,7 +20,9 @@ class BooksController extends Controller
      */
     public function index ()
     {
-        $books = Book::orderBy('name', 'asc')->paginate(3);
+//        $one_days_ago = date('Y-m-d', strtotime('-1 days'));
+
+        $books = Book::orderBy('id','desc')->get();
         $authors = Author::all();
         $categories = Category::all();
         return view('books.list', compact('books', 'authors', 'categories'));
@@ -34,7 +37,7 @@ class BooksController extends Controller
         $categoryFilter = Category::find($idCategory);
 
         if (!$authorFilter && !$categoryFilter) {
-            Session::flash('success', 'Hãy chọn dữ liệu cần tìm!');
+            Session::flash('error', 'Hãy chọn dữ liệu cần tìm!');
             return redirect()->route('books_index');
         }
 
@@ -107,7 +110,8 @@ class BooksController extends Controller
      */
     public function show ($id)
     {
-        //
+        $book = Book::FindOrFail($id);
+        return view('books.detail',compact('book'));
     }
 
     /**
@@ -168,24 +172,30 @@ class BooksController extends Controller
     public function destroy ($id)
     {
         $book = Book::FindOrFail($id);
-        $image = $book->image;
+        $bill = Bill::where("id_book", $book->id)->first();
+        if ($bill) {
+            Session::flash('error', 'Sách đang cho mượn không được phép xoá!');
+        } else {
+            $image = $book->image;
 
-        //delete image
-        if ($image) {
-            Storage::delete('/public/' . $image);
+            //delete image
+            if ($image) {
+                Storage::delete('/public/' . $image);
+            }
+            $book->delete();
+
+            //dung session de dua ra thong bao
+            Session::flash('success', 'Xóa thành công');
         }
-        $book->delete();
 
-        //dung session de dua ra thong bao
-        Session::flash('success', 'Xóa thành công');
         return redirect()->route('books_index');
     }
 
-    public function searchBook (Request $request)
-    {
-        $keyword = $request->input('searchBook');
-        $books = Book::where('name', 'like', '%' . $keyword . '%')->paginate(1);
-
-        return view('books.list', compact('books'));
-    }
+//    public function searchBook (Request $request)
+//    {
+//        $keyword = $request->input('searchBook');
+//        $books = Book::where('name', 'like', '%' . $keyword . '%')->paginate(1);
+//
+//        return view('books.list', compact('books'));
+//    }
 }

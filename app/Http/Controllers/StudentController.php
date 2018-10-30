@@ -12,7 +12,7 @@ class StudentController extends Controller
 {
     public function list ()
     {
-        $students = Student::paginate(10);
+        $students = Student::orderBy('id','desc')->get();;
         return view('students.list', compact('students'));
     }
 
@@ -56,6 +56,7 @@ class StudentController extends Controller
         $keyword = $request->input('search');
         $books = Book::where('name', 'like', '%' . $keyword . '%')->get();
         $authors = Author::where('name', 'like', '%' . $keyword . '%')->get();
+
         return view('index_layouts.search', compact('books', 'authors', 'categories', 'keyword'));
     }
 
