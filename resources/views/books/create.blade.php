@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Create Category
+    Create Book
 @endsection
 
 @section('content')
@@ -8,21 +8,25 @@
         <div class="container">
             <div class="col-12">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-4">
+                    </div>
+                    <div class="col-8">
                         <br>
-                        <h1>Add New Book</h1>
+                        <h1>Tạo mới sách</h1>
+                    </div>
+                    <div class="col-12">
                         <hr>
                     </div>
                     <div class="col-12">
                         <form method="post" action="{{ route('book_store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label>Book Name</label>
+                                <label>Tên sách:</label>
                                 <input type="text" class="form-control" name="name" placeholder="Enter name" required>
                             </div>
 
                             <div class="form-group">
-                                <label>Description</label>
+                                <label>Tóm tắt nội dung:</label>
                                 <textarea class="form-control"
                                           id="description"
                                           name="description"
@@ -32,12 +36,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Quantity</label>
+                                <label>Số lương:</label>
                                 <input type="text" class="form-control" name="quantity" placeholder="Enter quantity"
                                        required>
                             </div>
                             <div class="form-group">
-                                <label for="sel1">Category</label>
+                                <label for="sel1">Thể loại:</label>
                                 <select class="form-control" id="sel1" name="id_category">
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -45,7 +49,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="sel1">Select list:</label>
+                                <label for="sel1">Tác giả:</label>
                                 <select class="form-control" id="sel1" name="id_author">
                                     @foreach($authors as $author)
                                         <option value="{{ $author->id }}">{{ $author->name }}</option>
@@ -53,7 +57,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlFile1">Ảnh</label>
+                                <label for="exampleFormControlFile1">Ảnh:</label>
                                 <input type="file" name="image" class="form-control-file" required>
                             </div>
 

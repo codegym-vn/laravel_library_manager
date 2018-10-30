@@ -11,7 +11,10 @@
                 </div>
                 <div class="col-8 ">
                     <br>
-                    <h1>Phiếu mượn:</h1>
+                    <h1>Danh sách phiếu mượn</h1>
+                </div>
+                <div class="col-12">
+                    <hr>
                 </div>
             </div>
             <div class="row">
@@ -28,14 +31,11 @@
                         <thead>
                         <tr class="bg-secondary">
                             <th style="text-align: center">STT</th>
-                            <th style="text-align: center">id_book</th>
-                            <th style="text-align: center">id_student</th>
-                            <th style="text-align: center">status</th>
-                            {{--<th style="text-align: center">email</th>--}}
-                            {{--<th style="text-align: center">phone</th>--}}
-                            {{--<th style="text-align: center">Book</th>--}}
-                            <th style="text-align: center">Borrowed Day</th>
-                            <th style="text-align: center">Pay Day</th>
+                            <th style="text-align: center">Sách</th>
+                            <th style="text-align: center">Học viên</th>
+                            <th style="text-align: center">Trạng thái</th>
+                            <th style="text-align: center">Ngày mượn</th>
+                            <th style="text-align: center">Ngày trả</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -48,12 +48,9 @@
                             @foreach($bills as $key => $bill)
                                 <tr>
                                     <th scope="row" style="text-align: center">{{ ++$key }}</th>
-                                    <td style="text-align: center">{{ $bill->id_book }}</td>
-                                    <td style="text-align: center">{{ $bill->id_student }}</td>
+                                    <td style="text-align: center">{{ $bill->book->name }}</td>
+                                    <td style="text-align: center">{{ $bill->student->student_name }}</td>
                                     <td style="text-align: center">{{ $bill->status }}</td>
-                                    {{--<td style="text-align: center">{{ $bill->email }}</td>--}}
-                                    {{--<td style="text-align: center">{{ $bill->phone }}</td>--}}
-                                    {{--<td style="text-align: center">{{ $bill->book->name }}</td>--}}
                                     <td style="text-align: center">{{ $bill->borrowed_day }}</td>
                                     <td style="text-align: center">{{ $bill->pay_day }}</td>
                                     <td>

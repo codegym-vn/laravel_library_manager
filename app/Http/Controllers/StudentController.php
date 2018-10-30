@@ -20,8 +20,10 @@ class StudentController extends Controller
     {
         $books_featured = Book::paginate(5);
         $books = Book::paginate(12);
+        $authors = Author::paginate(6);
+        $author = Author::where('name', 'kim dung');
         $categories = Category::all();
-        return view('index_layouts.index', compact('books', 'categories', 'books_featured'));
+        return view('index_layouts.index', compact('books', 'categories', 'books_featured', 'authors', 'author'));
     }
 
     public function category_list_book ($id)
@@ -56,7 +58,9 @@ class StudentController extends Controller
         $keyword = $request->input('search');
         $books = Book::where('name', 'like', '%' . $keyword . '%')->get();
         $authors = Author::where('name', 'like', '%' . $keyword . '%')->get();
-        return view('index_layouts.search', compact('books', 'authors', 'categories', 'keyword'));
+        $books_featured = Book::paginate(5);
+        $totalBookFilter = count($books);
+        return view('index_layouts.search', compact('books', 'authors', 'categories', 'keyword', 'books_featured','totalBookFilter', 'books_author'));
     }
 
     public function author_list_book ($id)
@@ -64,6 +68,7 @@ class StudentController extends Controller
         $categories = Category::all();
         $author = Author::findOrFail($id);
         $books = Book::where('id_author', $id)->get();
-        return view('index_layouts.list_book_author_search', compact('categories', 'books', 'author'));
+        $categories = Category::all();
+        return view('index_layouts.list_book_author_search', compact('categories', 'books', 'author', 'categories'));
     }
 }

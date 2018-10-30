@@ -9,24 +9,26 @@
             <div class="col-12">
                 <div class="row">
                     <div class="col-4">
-                        <br>
-                        <h1>Categories Table:</h1>
                     </div>
                     <div class="col-8">
                         <br>
-                        <div class="container-fluid">
-                            <form class="form-inline my-2 my-lg-0" id="search1" action="#">
-                                <div class="row">
-                                    <div class="col-9.5">
-                                        <input class="form-control mr-sm-2" type="text" name="searchBook"
-                                               placeholder="Search">
-                                    </div>
-                                    <div class="col-2.5">
-                                        <button class="btn btn-outline-dark my-4 my-sm-0" type="submit">Search</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                        <h1>Categories Table</h1>
+                        {{--<div class="container-fluid">--}}
+                            {{--<form class="form-inline my-2 my-lg-0" id="search1" action="#">--}}
+                                {{--<div class="row">--}}
+                                    {{--<div class="col-9.5">--}}
+                                        {{--<input class="form-control mr-sm-2" type="text" name="searchBook"--}}
+                                               {{--placeholder="Search">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="col-2.5">--}}
+                                        {{--<button class="btn btn-outline-dark my-4 my-sm-0" type="submit">Search</button>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</form>--}}
+                        {{--</div>--}}
+                    </div>
+                    <div class="col-12">
+                        <hr>
                     </div>
                 </div>
                 <div class="row">
@@ -44,7 +46,7 @@
                             <tr class="bg-secondary">
                                 <th style="text-align: center">STT</th>
                                 <th style="text-align: center">ID</th>
-                                <th style="text-align: center">Category Name</th>
+                                <th style="text-align: center">Tên thể loại</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -76,7 +78,7 @@
                                 {{ $categories->appends(request()->query()) }}
                             </div>
                             <div class="col-1">
-                                <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Back
+                                <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Trở lại
                                 </button>
                             </div>
                         </div>

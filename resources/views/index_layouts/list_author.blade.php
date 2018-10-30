@@ -1,10 +1,7 @@
 @extends('layouts.view_layout')
 
 @section('body-content')
-    <div class="col-md-1">
-
-    </div>
-    <div class="col-md-10">
+    <div class="container">
         <div class="row content-banner">
             <div class="col-sm-12 col-md-9 banner1">
                 <div class="row content-book-list">
@@ -12,38 +9,46 @@
                         <h4>Tác giả</h4>
                         <div class="row list-book">
                             @foreach($authors as $key => $author)
-                                <div class="col-sm-12 col-md-2 book">
-                                    <div class="border-anh">
-                                        <a href="{{ route('student_author_book', $author->id) }}" class="a_point_card">
-                                            <img src="{{ asset('storage/' . $author->image) }}">
-                                        </a>
-                                        <p style="text-align: center"><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span></p>
-                                        <a href="{{ route('student_author_book', $author->id) }}" class="a_point_card">
-                                            <p style="text-align: center">{{ $author->name }}</p>
-                                        </a>
+                                <div class="col-6 col-md-3">
+                                    <div class="row border_book">
+                                        <div class="head_item">
+                                            <a href="{{ route('student_author_book', $author->id) }}" class="a_point_card">
+                                                <img src="{{ asset('storage/' . $author->image) }}">
+                                            </a>
+                                        </div>
+                                        <div class="body__item">
+                                            <a href="{{ route('student_author_book', $author->id) }}" class="a_point_card">
+                                                <p>{{ $author->name }}</p>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
-
                     </div>
                 </div>
             </div>
             <div class="col-sm-12 col-md-3 book-news">
-                <h5>Có thể bạn muốn đọc</h5>
                 @foreach($books_featured as $key => $book)
                     <div class="book-news-1">
                         <div class="row">
-                            <div class="col-3 img-book-news">
+                            <div class="img-book-news">
                                 <a href="{{ route('student_details_book', $book->id) }}" class="a_point_card">
                                     <img src="{{ asset('storage/' . $book->image) }}">
                                 </a>
                             </div>
-                            <div class="col-9 content-book-news">
+                            <div class="content-book-news">
                                 <a href="{{ route('student_details_book', $book->id) }}" class="a_point_card">
-                                    <span>{{ $book->name }}</span>
+                                    <h6>{{ $book->name }}</h6>
                                 </a>
-                                <p><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span></p>
+                                <span>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <br></span>
+                                <b><span>Số lượng: {{ $book->quantity }}</span></b>
                             </div>
                         </div>
                     </div>

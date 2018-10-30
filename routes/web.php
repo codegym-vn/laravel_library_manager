@@ -94,3 +94,7 @@ Route::group(['prefix' => 'home'], function (){
 
     Route::get('/{id}/author-list-book', 'StudentController@author_list_book')->name('student_author_book');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

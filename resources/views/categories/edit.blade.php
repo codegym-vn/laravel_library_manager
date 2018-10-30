@@ -4,20 +4,24 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid bg-light">
+    <div class="container-fluid">
         <div class="container">
             <div class="col-12">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-4">
+                    </div>
+                    <div class="col-8">
                         <br>
-                        <h1>Edit Category</h1>
+                        <h1>Chỉnh sửa thể loại</h1>
+                    </div>
+                    <div class="col-12">
                         <hr>
                     </div>
                     <div class="col-12">
                         <form method="post" action="{{ route('category_update', $category->id) }}">
                             @csrf
                             <div class="form-group">
-                                <label>Category Name</label>
+                                <label>Tên thể loại:</label>
                                 <input type="text" class="form-control" name="name" value="{{ $category->name }}" required>
                             </div>
                             <button type="submit" class="btn btn-secondary">Sửa</button>
