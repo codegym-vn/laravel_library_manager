@@ -52,19 +52,19 @@
                        aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="color: #fff">Search</button>
             </form>
-
         </nav>
     </header>
 </div>
-@yield('body-content')
-<div class="row footer1">
-    <div class="col-lg-3 col-md-6 social-info text-left" style="padding-left: 20px">
-        <h3 class="tittle1 foot mb-md-5 mb-4 text-white" style="margin-top: 20px">Giáo vụ</h3>
-        <p>Codegym Building </p>
-        <p class="my-2"> Hà Nội, VN</p>
-        <p class="phone">phone: +84.979.131.592</p>
-        <p class="phone my-2">Fax: +84.979.131.592</p>
-        <p class="phone">Mail: thao.phung@codegym.vn<a href="mailto:thao.phung@codegym.vn"></a>
+        @yield('body-content')
+    <div class="row footer1">
+        <div class="col-lg-3 col-md-6 social-info text-left" style="padding-left: 20px">
+            <h3 class="tittle1 foot mb-md-5 mb-4 text-white" style="margin-top: 20px">Giáo vụ</h3>
+            <p>Codegym Building </p>
+            <p class="my-2"> Hà Nội, VN</p>
+            <p class="phone">phone: +84.979.131.592</p>
+            <p class="phone my-2">Fax: +84.979.131.592</p>
+            <p class="phone">Mail: thao.phung@codegym.vn
+                <a href="mailto:thao.phung@codegym.vn"></a>
             </p>
 
         </div>
@@ -100,7 +100,6 @@
             </ul>
         </div>
     </div>
-</div>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

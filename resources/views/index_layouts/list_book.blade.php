@@ -18,6 +18,8 @@
                                         </div>
                                         <div class="body_item">
                                             <a href="{{ route('student_details_book', $book->id) }}" class="a_point_card">
+                                                <p>{{ $book->name }}</p>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

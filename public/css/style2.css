@@ -302,7 +302,7 @@ ul.scial{
 .last-content-details h4{
     color: #0ebeff;
     margin-bottom: 20px;
-    border-bottom: 1px dashed #b9bbbe;
+    border-bottom: 2px solid rgb(243, 244, 247);
 }
 /* căn chỉnh thẻ a*/
 .a_point_card {
@@ -333,6 +333,9 @@ ul.scial{
 }
 .book-list_item a:hover{
     text-decoration: none;
+}
+.body_item{
+    width: 100%;
 }
 .body_item p{
     font-size: 14px;
@@ -383,7 +386,6 @@ ul.scial{
     margin-bottom: 20px;
 }
 .head_author img{
-    border: #1d68a7 3px solid;
     margin-left: 15px;
     float: left;
     margin-top: 10px;
@@ -443,3 +445,22 @@ ul.scial{
 .highlights-category-2 ul li:first-child{
     margin-top: 15px;
 }
+/*details*/
+.first-content-details{
+    margin-bottom: 30px;
+}
+.tab-content p{
+    font-size: 14px;
+}
+.tab-content h4{
+    font-size: 24px;
+}
+.MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
+.MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
+.MultiCarousel .MultiCarousel-inner .item { float: left;}
+.MultiCarousel .MultiCarousel-inner .item > div { text-align: center; padding:10px; margin:10px; border: 1px solid rgb(243, 244, 247)}
+.MultiCarousel .leftLst, .MultiCarousel .rightLst { position:absolute; border-radius:50%;top:calc(50% - 20px); }
+.MultiCarousel .leftLst { left:0; }
+.MultiCarousel .rightLst { right:0; }
+
+.MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }

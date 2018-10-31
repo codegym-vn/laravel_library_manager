@@ -7,6 +7,7 @@ use App\Models\Book;
 use App\Models\Category;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use function Symfony\Component\VarDumper\Dumper\esc;
 
 class StudentController extends Controller
 {
@@ -19,11 +20,11 @@ class StudentController extends Controller
     public function index ()
     {
         $books_featured = Book::paginate(5);
-        $books = Book::paginate(12);
+        $books = Book::orderBy('created_at', 'dsc')->take(6)->get();
         $authors = Author::paginate(6);
-        $author = Author::where('name', 'kim dung');
+        $book_id_author = Book::groupBy('id_author', '>', '5')->take(4)->get();
         $categories = Category::all();
-        return view('index_layouts.index', compact('books', 'categories', 'books_featured', 'authors', 'author'));
+        return view('index_layouts.index', compact('books', 'categories', 'books_featured', 'authors', 'book_id_author'));
     }
 
     public function category_list_book ($id)

@@ -75,17 +75,19 @@
                     <div class="tab-content">
                         <div id="home" class="container tab-pane active"><br>
                             <div class="row">
+                                @foreach($books as $key => $book)
                                 <div class="col-6 col-md-2">
                                     <div class="row  book-list_item">
                                         <div class="head_item">
-                                            <img src="{{ asset('image1/book1.jpeg') }}" class="head_item">
+                                            <img src="{{ asset('storage/' . $book->image) }}">
                                         </div>
                                         <div class="body_item">
-                                            <p>Kinh Doanh Như Một Cuộc Chơi</p>
-                                            <p>Số lượng: </p>
+                                            <p>{{ $book->name }}</p>
+                                            <p>Số lượng: {{ $book->quantity }}</p>
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
                         </div>
                         <div id="menu1" class="container tab-pane fade"><br>
@@ -139,27 +141,28 @@
                 <div class="col-sm-4 authors-favorite">
                     <div class="row">
                         <div class="head_author">
-                            <img src="https://ebook.vn//uploads/authors/thumb_1514912724.png" class="rounded-circle" alt="brian-tracy">
-                            <div class="author_intro">
-                               <h4>{{ $author->name }}</h4>
-                                <p>Quốc gia: {{ $author->address }}</p>
-                                <p>
-                                    <i class="star-item fa fa-star"></i>
-                                    <i class="star-item fa fa-star"></i>
-                                    <i class="star-item fa fa-star"></i>
-                                    <i class="star-item fa fa-star"></i>
-                                    <i class="star-item fa fa-star"></i>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="body_author">
-                            <h4>Sách nổi bật</h4>
-                            @foreach($author->books as $key => $book)
-                                <a href="{{ route('student_details_book', $book->id) }}" class="a_point_card">
-                                    <img src="{{ asset('storage/' . $book->image) }}">
-                                </a>
-                            @endforeach
-                        </div>
+                            @dd($book_id_author->author->name)
+                            {{--<img src="{{ asset('storage/' . $book_id_author->author->image)  }}" class="rounded-circle col-4" alt="brian-tracy">--}}
+                            {{--<div class="author_intro">--}}
+                               {{--<h4>{{ $book_id_author->author->name }}</h4>--}}
+                                {{--<p>Quốc gia: {{ $book_id_author->author->address }}</p>--}}
+                                {{--<p>--}}
+                                    {{--<i class="star-item fa fa-star"></i>--}}
+                                    {{--<i class="star-item fa fa-star"></i>--}}
+                                    {{--<i class="star-item fa fa-star"></i>--}}
+                                    {{--<i class="star-item fa fa-star"></i>--}}
+                                    {{--<i class="star-item fa fa-star"></i>--}}
+                                {{--</p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="body_author">--}}
+                            {{--<h4>Sách nổi bật</h4>--}}
+                            {{--@foreach($book_id_author as $key => $book)--}}
+                                {{--<a href="{{ route('student_details_book', $book->id) }}" class="a_point_card">--}}
+                                    {{--<img src="{{ asset('storage/' . $book->image) }}">--}}
+                                {{--</a>--}}
+                            {{--@endforeach--}}
+                        {{--</div>--}}
                     </div>
                 </div>
             </div>
