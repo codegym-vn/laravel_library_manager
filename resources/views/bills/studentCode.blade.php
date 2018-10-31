@@ -19,15 +19,9 @@
                         <hr>
                     </div>
                     <div class="col-12">
-                        @if (Session::has('success'))
-                            <p class="text-success">
-                                <i class="fa fa-check" aria-hidden="true"></i>
-                                {{ Session::get('success') }}
-                            </p>
-                        @endif
                         @if (Session::has('error'))
                             <p class="text-danger">
-                                <i class="fa fa-check" aria-hidden="true"></i>
+                                <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
                                 {{ Session::get('error') }}
                             </p>
                         @endif
@@ -38,8 +32,8 @@
                                 <label>Student Code:</label>
                                 <input type="text" class="form-control" name="student_code" value="" required>
                             </div>
-                            <button type="submit" class="btn btn-secondary">Xác thực</button>
-                            <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Hủy
+                            <button type="submit" class="btn btn-primary">Xác thực</button>
+                            <button class="btn btn-primary" onclick="window.history.go(-1); return false;">Hủy
                             </button>
                         </form>
                     </div>

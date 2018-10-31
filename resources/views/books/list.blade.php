@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid bg-light" style="height: 100%">
+    <div class="container bg-light" style="height: 100%">
         <div class="col-12">
             <div class="row">
                 <div class="col-4">
@@ -27,35 +27,35 @@
                             {{ Session::get('success') }}
                         </p>
                     @endif
+                    @if (Session::has('error'))
+                        <p class="text-danger">
+                            <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                            {{ Session::get('error') }}
+                        </p>
+                    @endif
                     @if(isset($totalBookFilter))
-                        <span class="text-muted">
-                    {{'Tìm thấy' . ' ' . $totalBookFilter . ' '. 'quấn sách:'}}
-                </span>
+                        <span class="text-muted">{{'Tìm thấy' . ' ' . $totalBookFilter . ' '. 'quấn sách:'}}</span>
                     @endif
 
                     @if(isset($authorFilter))
                         <br>
-                        {{--<div class="pl-5">--}}
                         <span class="text-muted"><i class="fa fa-check" aria-hidden="true"></i>
                             {{ 'Do nhà văn:' . ' ' . $authorFilter->name . ' ' . 'sáng tác !' }}</span>
                     @endif
                     @if(isset($categoryFilter))
                         <br>
-                        {{--<div class="pl-5">--}}
                         <span class="text-muted"><i class="fa fa-check" aria-hidden="true"></i>
                             {{ 'Thuộc thể loại:' . ' ' . $categoryFilter->name }}</span>
                     @endif
 
                 </div>
                 <div class="col-12">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered data-table">
                         <thead>
                         <tr class="bg-secondary">
                             <th style="text-align: center">STT</th>
                             <th style="text-align: center">Tên sách</th>
-                            <th style="text-align: center">Tóm tắt nội dung</th>
                             <th style="text-align: center">Số lương</th>
-                            <th style="text-align: center">Ảnh</th>
                             <th style="text-align: center">Thể loại</th>
                             <th style="text-align: center">Tác giả</th>
                             <th></th>
@@ -71,25 +71,17 @@
                                 <tr>
                                     <th scope="row" style="text-align: center">{{ ++$key }}</th>
                                     <td style="text-align: center">{{ $book->name }}</td>
-                                    <td>{{ $book->description }}</td>
                                     <td style="text-align: center">{{ $book->quantity }}</td>
-                                    <td style="text-align: center">
-                                        @if($book->image)
-                                            <img src="{{ asset('storage/'.$book->image) }}" alt=""
-                                                 style="width: 200px; height: 250px">
-                                        @else
-                                            {{'Chưa có ảnh'}}
-                                        @endif
-                                    </td>
                                     <td style="text-align: center">{{ $book->category->name }}</td>
                                     <td style="text-align: center">{{ $book->author->name }}</td>
-                                    <td>
-                                        <a href="{{ route('book_edit', $book->id) }}" class="btn"><i
-                                                class="fas fa-feather"></i></a>
-                                        <hr>
+                                    <td style="text-align: center">
+                                        <a href="{{ route('book_show', $book->id) }}" class="text-dark btn">
+                                            <i class="fas fa-eye"></i></a>
+                                        <a href="{{ route('book_edit', $book->id) }}" class="btn">
+                                            <i class="fas fa-feather"></i></a>
                                         <a href="{{ route('book_destroy', $book->id) }}" class="text-danger btn"
-                                           onclick="return confirm('Bạn chắc chắn muốn xóa?')"><i
-                                                class="fas fa-trash-alt"></i></a>
+                                           onclick="return confirm('Bạn chắc chắn muốn xóa?')">
+                                            <i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -97,11 +89,9 @@
                         </tbody>
                     </table>
                     <div class="row">
-                        <div class="col-11">
-                            {{ $books->appends(request()->query()) }}
-                        </div>
+
                         <div class="col-1">
-                            <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Trở lại
+                            <button class="btn btn-primary" onclick="window.history.go(-1); return false;">Trở lại
                             </button>
                         </div>
                     </div>
@@ -183,7 +173,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" id="submitAjax" class="btn btn-primary">Chọn</button>
-                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
+                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">
                             Hủy
                         </button>
                     </div>

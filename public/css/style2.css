@@ -333,3 +333,7 @@ ul.scial{
 .a_point_card:hover{
     text-decoration: none;
 }
+.row.content{
+    min-height: 800px;
+    max-height: 100%;
+}

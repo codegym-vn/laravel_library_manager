@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid bg-light" style="height: 100%">
+    <section style="height: 100%">
         <div class="row">
             <div class="container" >
                 <div class="row ">
@@ -15,8 +15,15 @@
                             <h1>Xác thực học viên</h1>
                             <hr>
                         </div>
-                        <div class="container">
+                        <div class="col-12">
                             <div>
+                                <div>
+                                    @if(isset($student))
+                                        <span class="text-center"><i class="fa fa-check" aria-hidden="true"></i>
+                                            {{'Mã học viên:' . ' ' . $studentCode}}
+                                        </span>
+                                    @endif
+                                </div>
                                 <div>
                                     @if(isset($student))
                                         <span class="text-center"><i class="fa fa-check" aria-hidden="true"></i>
@@ -61,28 +68,35 @@
                             <h1>Phiếu mượn sách</h1>
                             <hr>
                         </div>
-                        <form method="post" action="{{ route('bill_store') }}">
+                        <form method="post" action="{{ route('bill_store',
+                        [
+                        "studentCode" => $studentCode,
+                        "fullname" => $student->fullname,
+                        "group" => $student->group,
+                        "email" => $student->email,
+                        "phone" => $student->phone
+                        ]) }}">
                             @csrf
-                            <div class="form-group">
-                                <label for="sel1">Mã học viên:</label>
-                                <input type="text" name="studentCode" class="form-control" value="{{ $studentCode }}" >
-                            </div>
-                            <div class="form-group">
-                                <label for="sel1">Tên học viên:</label>
-                                <input type="text" name="fullname" class="form-control" value="{{ $student->fullname }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="sel1">Học viên lớp:</label>
-                                <input type="text" name="group" class="form-control" value="{{ $student->group }}" >
-                            </div>
-                            <div class="form-group">
-                                <label for="sel1">Email:</label>
-                                <input type="text" name="email" class="form-control" value="{{ $student->email }}" >
-                            </div>
-                            <div class="form-group">
-                                <label for="sel1">Số điện thoại:</label>
-                                <input type="text" name="phone" class="form-control" value="{{ $student->phone }}" >
-                            </div>
+                            {{--<div class="form-group">--}}
+                                {{--<label for="sel1">Mã học viên:</label>--}}
+                                {{--<input type="text" name="studentCode" class="form-control" value="{{ $studentCode }}" >--}}
+                            {{--</div>--}}
+                            {{--<div class="form-group">--}}
+                                {{--<label for="sel1">Tên học viên:</label>--}}
+                                {{--<input type="text" name="fullname" class="form-control" value="{{ $student->fullname }}">--}}
+                            {{--</div>--}}
+                            {{--<div class="form-group">--}}
+                                {{--<label for="sel1">Học viên lớp:</label>--}}
+                                {{--<input type="text" name="group" class="form-control" value="{{ $student->group }}" >--}}
+                            {{--</div>--}}
+                            {{--<div class="form-group">--}}
+                                {{--<label for="sel1">Email:</label>--}}
+                                {{--<input type="text" name="email" class="form-control" value="{{ $student->email }}" >--}}
+                            {{--</div>--}}
+                            {{--<div class="form-group">--}}
+                                {{--<label for="sel1">Số điện thoại:</label>--}}
+                                {{--<input type="text" name="phone" class="form-control" value="{{ $student->phone }}" >--}}
+                            {{--</div>--}}
                             <div class="form-group">
                                 <label for="sel1">Sách:</label>
                                 <select class="form-control" id="sel1" name="id_book" required>
@@ -113,5 +127,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 @endsection

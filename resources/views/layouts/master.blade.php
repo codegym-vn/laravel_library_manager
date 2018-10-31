@@ -7,16 +7,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
           integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{asset('DataTables/datatables.min.css')}}"/>
 
 
 </head>
-<style type="text/css">
-    #button1 {
-        width: 12em;
-    }
-
-
-</style>
+@yield('css')
 <body>
 <div class="container-fluid">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -32,7 +27,7 @@
                 <hr>
                 <div class="btn-group">
                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                        <a id="button1" class="btn bg-light">Quản lý sách</a>
+                        <a id="button1" class="btn bg-light" style="width: 12em">Quản lý sách</a>
                         <span class="caret"></span>
                     </button>
                     <div class="dropdown-menu" style="width: 235px">
@@ -43,7 +38,7 @@
                 <hr>
                 <div class="btn-group">
                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                        <a id="button1" class="btn bg-light">Quản lý thể loại</a>
+                        <a id="button1" class="btn bg-light" style="width: 12em">Quản lý thể loại</a>
                         <span class="caret"></span>
                     </button>
                     <div class="dropdown-menu" style="width: 235px">
@@ -54,7 +49,7 @@
                 <hr>
                 <div class="btn-group">
                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                        <a id="button1" class="btn bg-light">Quản lý tác giả</a>
+                        <a id="button1" class="btn bg-light" style="width: 12em">Quản lý tác giả</a>
                         <span class="caret"></span>
                     </button>
                     <div class="dropdown-menu" style="width: 235px">
@@ -65,7 +60,7 @@
                 <hr>
                 <div class="btn-group">
                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                        <a id="button1" class="btn bg-light">Phiếu mượn</a>
+                        <a id="button1" class="btn bg-light" style="width: 12em">Phiếu mượn</a>
                         <span class="caret"></span>
                     </button>
                     <div class="dropdown-menu" style="width: 235px">
@@ -76,7 +71,7 @@
                 </div>
                 <hr>
             </div>
-            <div class="col-md-10 ">
+            <div class="col-md-10">
                 @yield('content')
             </div>
         </div>
@@ -86,5 +81,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{asset('DataTables/datatables.min.js')}}"></script>
+<script src="{{ asset('js/showPicture.js') }}"></script>
+
 </body>
 </html>
