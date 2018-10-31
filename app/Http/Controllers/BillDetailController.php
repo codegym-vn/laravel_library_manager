@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class BillDetailController extends Controller
 {
-    public function show() {
+    public function show($id) {
 
     }
 }

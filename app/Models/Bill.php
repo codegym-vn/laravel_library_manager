@@ -20,6 +20,6 @@ class Bill extends Model
 
     public function billDetail ()
     {
-        return $this->hasOne('App\Models\BillDetail');
+        return $this->hasOne('App\Models\BillDetail', 'id_bill');
     }
 }
