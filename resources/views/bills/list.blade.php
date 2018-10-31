@@ -53,7 +53,9 @@
                                     <td style="text-align: center">{{ $bill->status }}</td>
                                     <td style="text-align: center">{{ $bill->borrowed_day }}</td>
                                     <td style="text-align: center">{{ $bill->pay_day }}</td>
-                                    <td>
+                                    <td style="text-align: center">
+                                        <a href="{{ route('book_show', $bill->id) }}" class="text-dark btn">
+                                            <i class="fas fa-eye"></i></a>
                                         <a href="{{ route('bill_destroy', $bill->id) }}" class="text-danger btn"
                                            onclick="return confirm('Bạn chắc chắn muốn xóa?')"><i
                                                 class="fas fa-trash-alt"></i></a>

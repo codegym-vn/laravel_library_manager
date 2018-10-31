@@ -45,11 +45,49 @@ class BillController extends Controller
         $studentInput = $request->input('studentCode');
         $student = Student::where('student_code', $studentInput)->first();
 
-        if ($student) {
+        $borrowedDay = strtotime($request->input('borrowed_day'));
+        $payDay = strtotime($request->input('pay_day'));
+        $borrowingTime = $payDay - $borrowedDay;
 
-            //neu sl sach muon < 2
-            if ($student->quantity_bill < 2) {
-                $student->quantity_bill += 1;
+        if ($borrowingTime > 604800) {
+            Session::flash('error', 'Bạn không được phép mượn vượt quá số ngày theo quy định!');
+            return redirect()->back();
+        } else {
+            if ($student) {
+                //neu sl sach muon < 2
+                if ($student->quantity_bill < 2) {
+                    $student->quantity_bill += 1;
+                    $student->save();
+
+                    $bill = new Bill();
+                    $bill->borrowed_day = $request->input('borrowed_day');
+                    $bill->pay_day = $request->input('pay_day');
+                    $bill->id_book = $request->input('id_book');
+                    $bill->id_student = $student->id;
+                    $bill->status = "Đang mượn";
+                    $bill->save();
+
+                    $billDetail = new BillDetail();
+                    $billDetail->id_book = $request->input('id_book');
+                    $billDetail->id_bill = $bill->id;
+                    $billDetail->save();
+
+
+                    Session::flash('success', 'Tạo mới thành công');
+                    return redirect()->route('bills_index');
+                } else {
+                    Session::flash('error', 'Bạn đã mượn vượt quá số lượng sách theo quy định!');
+                    return redirect()->route('student_list');
+                }
+
+            } else {
+                $student = new Student();
+                $student->student_code = $_GET["studentCode"];
+                $student->student_name = $_GET["fullname"];
+                $student->class_name = $_GET["group"];
+                $student->email = $_GET["email"];
+                $student->phone = $_GET["phone"];
+                $student->quantity_bill = 1;
                 $student->save();
 
                 $bill = new Bill();
@@ -64,37 +102,10 @@ class BillController extends Controller
                 $billDetail->id_book = $request->input('id_book');
                 $billDetail->id_bill = $bill->id;
                 $billDetail->save();
-            } else {
-                Session::flash('error', 'Bạn đã mượn vượt quá số lượng sách theo quy định!');
-                return redirect()->route('student_list');
+                Session::flash('success', 'Tạo mới thành công');
+                return redirect()->route('bills_index');
             }
-
-        } else {
-            $student = new Student();
-            $student->student_code = $_GET["studentCode"];
-            $student->student_name = $_GET["fullname"];
-            $student->class_name = $_GET["group"];
-            $student->email = $_GET["email"];
-            $student->phone = $_GET["phone"];
-            $student->quantity_bill = 1;
-            $student->save();
-
-            $bill = new Bill();
-            $bill->id_book = $request->input('id_book');
-            $bill->id_student = $student->id;
-            $bill->status = "Đang mượn";
-            $bill->borrowed_day = $request->input('borrowed_day');
-            $bill->pay_day = $request->input('pay_day');
-            $bill->save();
-
-            $billDetail = new BillDetail();
-            $billDetail->id_book = $request->input('id_book');
-            $billDetail->id_bill = $bill->id;
-            $billDetail->save();
         }
-
-        Session::flash('success', 'Tạo mới thành công');
-        return redirect()->route('bills_index');
     }
 
     public function destroy ($id)
