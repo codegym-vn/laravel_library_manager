@@ -22,7 +22,7 @@
                             @csrf
                             <div class="form-group">
                                 <label>Tên sách:</label>
-                                <input type="text" class="form-control" name="name" placeholder="Enter name" required>
+                                <input type="text" class="form-control" name="name" placeholder="Nhập tên sách" required>
                             </div>
 
                             <div class="form-group">
@@ -30,14 +30,14 @@
                                 <textarea class="form-control"
                                           id="description"
                                           name="description"
-                                          placeholder="Enter description"
+                                          placeholder="Tóm tắt nội dung"
                                           rows="3"
                                           required></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label>Số lương:</label>
-                                <input type="text" class="form-control" name="quantity" placeholder="Enter quantity"
+                                <input type="text" class="form-control" name="quantity" placeholder="Nhập số lượng"
                                        required>
                             </div>
                             <div class="form-group">
@@ -58,11 +58,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Ảnh:</label>
-                                <input type="file" name="image" class="form-control-file" required>
+                                <input type="file" id="chooseimg" name="image" class="form-control-file" required>
+                                <img id="image" style="width: 130px; height: 160px">
                             </div>
-
-                            <button type="submit" class="btn btn-secondary">Thêm mới</button>
-                            <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Hủy
+                            <button type="submit" class="btn btn-primary">Thêm mới</button>
+                            <button class="btn btn-primary" onclick="window.history.go(-1); return false;">Hủy
                             </button>
                         </form>
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -15,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(5);
+        $categories = Category::orderBy('id','desc')->get();
         return view('categories.list', compact('categories'));
     }
 
@@ -42,7 +43,7 @@ class CategoryController extends Controller
         $category->save();
 
         //dung session de dua ra thong bao
-        Session::flash('success', 'Tạo mới thành công');
+        Session::flash('success', 'Tạo mới thành công thể loại');
         //tao moi xong quay ve trang danh sach task
         return redirect()->route('categories_index');
     }
@@ -84,7 +85,7 @@ class CategoryController extends Controller
         $category->save();
 
         //dung session de dua ra thong bao
-        Session::flash('success', 'Cập nhật thành công');
+        Session::flash('success', 'Cập nhật thành công thể loại');
         //tao moi xong quay ve trang danh sach task
         return redirect()->route('categories_index');
     }
@@ -98,10 +99,16 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::FindOrFail($id);
-        $category->delete();
+        $book = Book::where("id_category", $category->id)->first();
 
-        //dung session de dua ra thong bao
-        Session::flash('success', 'Xóa thành công');
+        if ($book) {
+            Session::flash('error','Không được phép xoá thể loại, nếu xoá sẽ ảnh hưởng tới dữ liệu!');
+        } else {
+            dd(11);
+            $category->delete();
+            //dung session de dua ra thong bao
+            Session::flash('success', 'Xóa thành công thể loại');
+        }
         //xoa xong quay ve trang danh sach task
         return redirect()->route('categories_index');
     }

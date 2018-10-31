@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Author;
+use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class AuthorController extends Controller
 {
     public function index(){
-        $authors = Author::paginate(3);
+        $authors = Author::orderBy('id','desc')->get();
         return view('authors.list', compact('authors'));
     }
 
@@ -69,16 +70,20 @@ class AuthorController extends Controller
 
     public function destroy($id){
         $author = Author::findOrFail($id);
-        $image = $author->image;
+        $book = Book::where('id_author', $author->id)->first();
 
-        if ($image) {
-            Storage::delete('/public/'.$image);
+        if ($book) {
+            Session::flash('error','Không được phép xoá tác giả, nếu xoá sẽ ảnh hưởng tới dữ liệu!');
+        } else {
+            $image = $author->image;
+            if ($image) {
+                Storage::delete('/public/'.$image);
+            }
+            $author->delete();
+            //dung session de dua ra thong bao
+            Session::flash('success', 'Xóa thành công');
         }
 
-        $author->delete();
-
-        //dung session de dua ra thong bao
-        Session::flash('success', 'Xóa thành công');
         return redirect()->route('author_index');
     }
 }

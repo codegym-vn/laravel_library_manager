@@ -464,3 +464,8 @@ ul.scial{
 .MultiCarousel .rightLst { right:0; }
 
 .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
+
+.row.content{
+    min-height: 800px;
+    max-height: 100%;
+}

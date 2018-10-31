@@ -27,7 +27,7 @@
                     @endif
                 </div>
                 <div class="col-12">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered data-table">
                         <thead>
                         <tr class="bg-secondary">
                             <th style="text-align: center">STT</th>
@@ -64,11 +64,8 @@
                         </tbody>
                     </table>
                     <div class="row">
-                        <div class="col-11">
-                            {{ $bills->appends(request()->query()) }}
-                        </div>
                         <div class="col-1">
-                            <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Back
+                            <button class="btn btn-primary" onclick="window.history.go(-1); return false;">Back
                             </button>
                         </div>
                     </div>

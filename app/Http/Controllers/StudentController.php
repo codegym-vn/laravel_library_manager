@@ -7,13 +7,14 @@ use App\Models\Book;
 use App\Models\Category;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use function Symfony\Component\VarDumper\Dumper\esc;
 
 class StudentController extends Controller
 {
     public function list ()
     {
-        $students = Student::paginate(10);
+        $students = Student::orderBy('id','desc')->get();;
         return view('students.list', compact('students'));
     }
 
@@ -21,8 +22,8 @@ class StudentController extends Controller
     {
         $books_featured = Book::paginate(5);
         $books = Book::orderBy('created_at', 'dsc')->take(6)->get();
-        $authors = Author::paginate(6);
-        $book_id_author = Book::groupBy('id_author', '>', '5')->take(4)->get();
+        $authors = Author::Where('name', 'Kim Dung')->take(4)->get();
+//        $book_id_author = Book::groupBy('id_author', '>', '5')->take(4)->get();
         $categories = Category::all();
         return view('index_layouts.index', compact('books', 'categories', 'books_featured', 'authors', 'book_id_author'));
     }
@@ -59,7 +60,7 @@ class StudentController extends Controller
         $keyword = $request->input('search');
         $books = Book::where('name', 'like', '%' . $keyword . '%')->get();
         $authors = Author::where('name', 'like', '%' . $keyword . '%')->get();
-        $books_featured = Book::paginate(5);
+        $books_featured = Book::get()->take(5);
         $totalBookFilter = count($books);
         return view('index_layouts.search', compact('books', 'authors', 'categories', 'keyword', 'books_featured','totalBookFilter', 'books_author'));
     }

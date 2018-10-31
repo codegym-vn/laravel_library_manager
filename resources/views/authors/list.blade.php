@@ -26,7 +26,15 @@
                         @endif
                     </div>
                     <div class="col-12">
-                        <table class="table table-bordered">
+                        @if (Session::has('error'))
+                            <p class="text-danger">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                {{ Session::get('error') }}
+                            </p>
+                        @endif
+                    </div>
+                    <div class="col-12">
+                        <table class="table table-bordered data-table">
                             <thead>
                             <tr class="bg-secondary">
                                 <th>STT</th>
@@ -67,8 +75,10 @@
                             @endif
                             </tbody>
                         </table>
-                        {{ $authors->links() }}
-                        {{--<a class="btn btn-secondary" href="{{ route('category_create') }}">Thêm mới</a>--}}
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-primary" onclick="window.history.go(-1); return false;">Trở lại
+                        </button>
                     </div>
                 </div>
             </div>

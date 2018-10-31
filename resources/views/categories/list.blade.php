@@ -13,19 +13,6 @@
                     <div class="col-8">
                         <br>
                         <h1>Categories Table</h1>
-                        {{--<div class="container-fluid">--}}
-                            {{--<form class="form-inline my-2 my-lg-0" id="search1" action="#">--}}
-                                {{--<div class="row">--}}
-                                    {{--<div class="col-9.5">--}}
-                                        {{--<input class="form-control mr-sm-2" type="text" name="searchBook"--}}
-                                               {{--placeholder="Search">--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-2.5">--}}
-                                        {{--<button class="btn btn-outline-dark my-4 my-sm-0" type="submit">Search</button>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</form>--}}
-                        {{--</div>--}}
                     </div>
                     <div class="col-12">
                         <hr>
@@ -41,7 +28,15 @@
                         @endif
                     </div>
                     <div class="col-12">
-                        <table class="table table-bordered">
+                        @if (Session::has('error'))
+                            <p class="text-danger">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                {{ Session::get('error') }}
+                            </p>
+                        @endif
+                    </div>
+                    <div class="col-12">
+                        <table class="table table-bordered data-table">
                             <thead>
                             <tr class="bg-secondary">
                                 <th style="text-align: center">STT</th>
@@ -74,11 +69,8 @@
                             </tbody>
                         </table>
                         <div class="row">
-                            <div class="col-11">
-                                {{ $categories->appends(request()->query()) }}
-                            </div>
                             <div class="col-1">
-                                <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Trở lại
+                                <button class="btn btn-primary" onclick="window.history.go(-1); return false;">Trở lại
                                 </button>
                             </div>
                         </div>

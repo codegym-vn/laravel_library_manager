@@ -30,28 +30,29 @@ class BillController extends Controller
             } else {
                 //dung session de dua ra thong bao
                 Session::flash('error', 'Học viên này đã nghỉ học không được phép mượn sách!');
-                return view('bills.studentCode');
             }
         } catch (\Exception $exception) {
             //dung session de dua ra thong bao
             Session::flash('error', 'Mã học sinh không đúng, yêu cầu nhập lại!');
-            return view('bills.studentCode');
         }
+        return view('bills.studentCode');
     }
 
     public function index ()
     {
-        $bills = Bill::paginate(3);
+        $bills = Bill::orderBy('id', 'desc')->get();
         return view('bills.list', compact('bills'));
     }
 
     public function store (Request $request)
     {
         $studentInput = $request->input('studentCode');
-        $student = Student::where('student_code',$studentInput)->first();
+        $student = Student::where('student_code', $studentInput)->first();
 
-        if ($student->quantity_bill < 2) {
-            if ($student) {
+        if ($student) {
+
+            //neu sl sach muon < 2
+            if ($student->quantity_bill < 2) {
                 $student->quantity_bill += 1;
                 $student->save();
 
@@ -68,36 +69,35 @@ class BillController extends Controller
                 $billDetail->id_bill = $bill->id;
                 $billDetail->save();
             } else {
-                $student = new Student();
-                $student->student_code = $request->input('studentCode');
-                $student->student_name = $request->input('fullname');
-                $student->class_name = $request->input('group');
-                $student->email = $request->input('email');
-                $student->phone = $request->input('phone');
-                $student->quantity_bill = 1;
-                $student->save();
-
-                $bill = new Bill();
-                $bill->id_book = $request->input('id_book');
-                $bill->id_student = $student->id;
-                $bill->status = "Đang mượn";
-                $bill->borrowed_day = $request->input('borrowed_day');
-                $bill->pay_day = $request->input('pay_day');
-                $bill->save();
-
-                $billDetail = new BillDetail();
-                $billDetail->id_book = $request->input('id_book');
-                $billDetail->id_bill = $bill->id;
-                $billDetail->save();
+                Session::flash('error', 'Bạn đã mượn vượt quá số lượng sách theo quy định!');
+                return redirect()->route('student_list');
             }
 
-            Session::flash('success', 'Tạo mới thành công');
-
         } else {
-            Session::flash('error', 'Bạn đã mượn vượt quá số lượng sách theo quy định!');
-            return redirect()->route('student_list');
+            $student = new Student();
+            $student->student_code = $_GET["studentCode"];
+            $student->student_name = $_GET["fullname"];
+            $student->class_name = $_GET["group"];
+            $student->email = $_GET["email"];
+            $student->phone = $_GET["phone"];
+            $student->quantity_bill = 1;
+            $student->save();
+
+            $bill = new Bill();
+            $bill->id_book = $request->input('id_book');
+            $bill->id_student = $student->id;
+            $bill->status = "Đang mượn";
+            $bill->borrowed_day = $request->input('borrowed_day');
+            $bill->pay_day = $request->input('pay_day');
+            $bill->save();
+
+            $billDetail = new BillDetail();
+            $billDetail->id_book = $request->input('id_book');
+            $billDetail->id_bill = $bill->id;
+            $billDetail->save();
         }
 
+        Session::flash('success', 'Tạo mới thành công');
         return redirect()->route('bills_index');
     }
 
@@ -109,12 +109,12 @@ class BillController extends Controller
         $student = Student::FindOrFail($bill->id_student);
 
         //cap nhap student
-        if($student){
+        if ($student) {
             $student->quantity_bill -= 1;
             $student->save();
         }
 
-        
+
         $billDetail = BillDetail::where('id_bill', $bill->id)->first();
         $billDetail->delete();
         $bill->delete();
