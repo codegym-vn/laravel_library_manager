@@ -55,10 +55,7 @@
         </nav>
     </header>
 </div>
-<div class="container-fluid">
-    <div class="row content">
         @yield('body-content')
-    </div>
     <div class="row footer1">
         <div class="col-lg-3 col-md-6 social-info text-left" style="padding-left: 20px">
             <h3 class="tittle1 foot mb-md-5 mb-4 text-white" style="margin-top: 20px">Giáo vụ</h3>
@@ -103,7 +100,6 @@
             </ul>
         </div>
     </div>
-</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
