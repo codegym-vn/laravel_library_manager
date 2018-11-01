@@ -7,13 +7,21 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
           integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{asset('DataTables/datatables.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}"/>
+
+    <style>
+        .navbar-dark ul li{
+            margin-top: 10px;
+        }
+        .navbar-dark ul{
+            margin-top: 10px;
+        }
+    </style>
 
 
 </head>
 @yield('css')
 <body>
-<div class="container-fluid">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand/logo -->
 
@@ -31,61 +39,77 @@
     </nav>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2 bg-secondary" style="min-height: 900px; max-height: 100%; text-align: center">
-                <hr>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                        <a id="button1" class="btn bg-light" style="width: 12em">Quản lý sách</a>
-                        <span class="caret"></span>
-                    </button>
-                    <div class="dropdown-menu" style="width: 235px">
-                        <a class="dropdown-item" href="{{ route('books_index') }}">Danh sách sách</a>
-                        <a class="dropdown-item" href="{{ route('book_create') }}">Tạo mới sách</a>
+            <div class="col-md-2" style="min-height: 700px; background-color: #7c848c">
+                    <div class="row">
+                        <hr>
+                        <nav class="navbar navbar-expand-lg navbar-dark">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNavDropdown" style="width: 100%; height: 100%">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                <a id="button1" class="btn bg-light" style="width: 11em">Quản lý sách</a>
+                                                <span class="caret"></span>
+                                            </button>
+                                            <div class="dropdown-menu" style="width: 230px">
+                                                <a class="dropdown-item" href="{{ route('books_index') }}">Danh sách sách</a>
+                                                <a class="dropdown-item" href="{{ route('book_create') }}">Tạo mới sách</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                <a id="button1" class="btn bg-light" style="width: 11em">Quản lý thể loại</a>
+                                                <span class="caret"></span>
+                                            </button>
+                                            <div class="dropdown-menu" style="width: 230px">
+                                                <a class="dropdown-item" href="{{ route('categories_index') }}">Danh sách thể loại</a>
+                                                <a class="dropdown-item" href="{{ route('category_create') }}">Tạo mới thể loại</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                <a id="button1" class="btn bg-light" style="width: 11em">Quản lý tác giả</a>
+                                                <span class="caret"></span>
+                                            </button>
+                                            <div class="dropdown-menu" style="width: 230px">
+                                                <a class="dropdown-item" href="{{ route('author_index') }}">Danh sách tác giả</a>
+                                                <a class="dropdown-item" href="{{ route('author_create') }}">Tạo mới tác giả</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                <a id="button1" class="btn bg-light" style="width: 11em">Phiếu mượn</a>
+                                                <span class="caret"></span>
+                                            </button>
+                                            <div class="dropdown-menu" style="width: 230px">
+                                                <a class="dropdown-item" href="{{ route('bills_index') }}">Danh sách phiếu mượn</a>
+                                                <a class="dropdown-item" href="{{ route('student_check') }}">Kiểm tra mã HV</a>
+                                                <a class="dropdown-item" href="{{ route('student_list') }}">Danh sách HV mượn sách</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <hr>
+
                     </div>
-                </div>
-                <hr>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                        <a id="button1" class="btn bg-light" style="width: 12em">Quản lý thể loại</a>
-                        <span class="caret"></span>
-                    </button>
-                    <div class="dropdown-menu" style="width: 235px">
-                        <a class="dropdown-item" href="{{ route('categories_index') }}">Danh sách thể loại</a>
-                        <a class="dropdown-item" href="{{ route('category_create') }}">Tạo mới thể loại</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                        <a id="button1" class="btn bg-light" style="width: 12em">Quản lý tác giả</a>
-                        <span class="caret"></span>
-                    </button>
-                    <div class="dropdown-menu" style="width: 235px">
-                        <a class="dropdown-item" href="{{ route('author_index') }}">Danh sách tác giả</a>
-                        <a class="dropdown-item" href="{{ route('author_create') }}">Tạo mới tác giả</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                        <a id="button1" class="btn bg-light" style="width: 12em">Phiếu mượn</a>
-                        <span class="caret"></span>
-                    </button>
-                    <div class="dropdown-menu" style="width: 235px">
-                        <a class="dropdown-item" href="{{ route('bills_index') }}">Danh sách phiếu mượn</a>
-                        <a class="dropdown-item" href="{{ route('student_check') }}">Kiểm tra mã HV</a>
-                        <a class="dropdown-item" href="{{ route('student_list') }}">Danh sách HV mượn sách</a>
-                    </div>
-                </div>
-                <hr>
             </div>
             <div class="col-md-10">
                 @yield('content')
             </div>
         </div>
     </div>
-</div>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>

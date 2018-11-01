@@ -144,6 +144,7 @@
                 </div>
                 <div class="col-sm-4 authors-favorite">
                     <div class="row">
+                        @foreach($author_f as $key => $author)
                         <div class="head_author">
                             <img src="{{ asset('storage/' . $author->image) }}" class="rounded-circle col-4" alt="brian-tracy">
                             <div class="author_intro">
@@ -161,11 +162,14 @@
                         <div class="body_author">
                             <h4>Sách nổi bật</h4>
                             @foreach($author->books as $key => $book)
+                                @if($key < 5)
                                 <a href="{{ route('student_details_book', $book->id) }}" class="a_point_card">
                                     <img src="{{ asset('storage/' . $book->image) }}">
                                 </a>
+                                @endif
                             @endforeach
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

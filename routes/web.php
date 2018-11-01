@@ -88,6 +88,9 @@ Route::group(['middleware' => 'auth', 'timeout'], function (){
 
     Route::get('/list-student', 'StudentController@list')->name('student_list');
 
+    Route::get('/bill-details/{id}', 'BillDetailController@show')->name('bill_details');
+
+    Route::post('/bill-details/{id}', 'BillDetailController@update')->name('bill_details_update');
 });
 
 
@@ -104,4 +107,8 @@ Route::group(['middleware' => 'auth', 'timeout'], function (){
     Route::get('/search', 'StudentController@search')->name('student_search');
 
     Route::get('/{id}/author-list-book', 'StudentController@author_list_book')->name('student_author_book');
+
+    Route::get('/register-book', 'StudentController@form_resgister')->name('student_register_form');
+
+    Route::post('/register-book', 'StudentController@register')->name('student_register');
 });

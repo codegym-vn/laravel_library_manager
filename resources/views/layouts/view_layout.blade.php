@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="menu" style="margin-bottom: 20px">
-    <header>
+    <header style="left: 0; top: 0; position: fixed; z-index: 10000; width: 100%">
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(39, 40, 130);">
             <a class="navbar-brand" href="{{ route('student_index') }}"><img src="{{ asset('image1/logo1.png') }}"
                                                                              alt="logo" style="width: 70%"></a>
@@ -44,6 +44,9 @@
                                    style="color: black; font-size: 14px">{{ $category->name }}</a>
                             @endforeach
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('student_register_form') }}">Đăng ký mượn sách</a>
                     </li>
                 </ul>
             </div>

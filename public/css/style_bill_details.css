@@ -1,0 +1,18 @@
+.menu h2{
+    margin-top: 10px;
+}
+.menu{
+    background-color: rgb(243, 244, 247);
+    border: 1px solid #b9bbbe;
+}
+.infomation{
+    border: 1px solid #b9bbbe;
+}
+.table_detals {
+    margin-top: 10px;
+    width: 100%;
+}
+.img img{
+    height: 100px;
+    margin-left: 50px;
+}
