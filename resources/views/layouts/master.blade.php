@@ -24,9 +24,18 @@
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand/logo -->
-        <a class="navbar-brand" href="#">
+
+        <a class="navbar-brand col-11" href="#">
             <img src="{{ asset('image1/logo1.png') }}" alt="logo" style="width:250px;">
         </a>
+        <ul class="navbar-right col-1" style="padding-top: 10px">
+            <li class="dropdown " style="list-style: none">
+                <a href="" class="dropdown-toggle btn" data-toggle="dropdown" style="color: #1b4b72; border: 1px solid #0ebeff ; background-color: white">{{ Auth::user()->name }}<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
+                </ul>
+            </li>
+        </ul>
     </nav>
     <div class="container-fluid">
         <div class="row">
@@ -93,6 +102,7 @@
                             </div>
                         </nav>
                         <hr>
+
                     </div>
             </div>
             <div class="col-md-10">

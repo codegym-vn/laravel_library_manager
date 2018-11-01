@@ -55,54 +55,64 @@
                        aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="color: #fff">Search</button>
             </form>
+            <ul class="navbar-right" >
+                <li class="dropdown " style="list-style: none; padding-top: 10px">
+                    <a href="" class="dropdown-toggle btn" data-toggle="dropdown"
+                       style="color: #1b4b72; border: 1px solid #0ebeff ; background-color: white">{{ Auth::user()->name }}
+                        <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
+                    </ul>
+                </li>
+            </ul>
         </nav>
     </header>
 </div>
-        @yield('body-content')
-    <div class="row footer1">
-        <div class="col-lg-3 col-md-6 social-info text-left" style="padding-left: 20px">
-            <h3 class="tittle1 foot mb-md-5 mb-4 text-white" style="margin-top: 20px">Giáo vụ</h3>
-            <p>Codegym Building </p>
-            <p class="my-2"> Hà Nội, VN</p>
-            <p class="phone">phone: +84.979.131.592</p>
-            <p class="phone my-2">Fax: +84.979.131.592</p>
-            <p class="phone">Mail: thao.phung@codegym.vn
-                <a href="mailto:thao.phung@codegym.vn"></a>
-            </p>
+@yield('body-content')
+<div class="row footer1">
+    <div class="col-lg-3 col-md-6 social-info text-left" style="padding-left: 20px">
+        <h3 class="tittle1 foot mb-md-5 mb-4 text-white" style="margin-top: 20px">Giáo vụ</h3>
+        <p>Codegym Building </p>
+        <p class="my-2"> Hà Nội, VN</p>
+        <p class="phone">phone: +84.979.131.592</p>
+        <p class="phone my-2">Fax: +84.979.131.592</p>
+        <p class="phone">Mail: thao.phung@codegym.vn
+            <a href="mailto:thao.phung@codegym.vn"></a>
+        </p>
 
-        </div>
-        <div class="col-lg-3 col-md-6 social-info text-left">
-            <h3 class="tittle1 foot mb-md-5 mb-4 text-white" style="margin-top: 20px">Về Codegym</h3>
-            <p>CodeGym đào tạo lập trình viên chuyên nghiệp theo phương pháp huấn luyện thực chiến trong thời gian ngắn,
-                thực hành liên tục và cường độ cao với mục tiêu học viên tốt nghiệp có thể đảm nhận ngay vị trí lập
-                trình viên full-stack tại các công ty.</p>
+    </div>
+    <div class="col-lg-3 col-md-6 social-info text-left">
+        <h3 class="tittle1 foot mb-md-5 mb-4 text-white" style="margin-top: 20px">Về Codegym</h3>
+        <p>CodeGym đào tạo lập trình viên chuyên nghiệp theo phương pháp huấn luyện thực chiến trong thời gian ngắn,
+            thực hành liên tục và cường độ cao với mục tiêu học viên tốt nghiệp có thể đảm nhận ngay vị trí lập
+            trình viên full-stack tại các công ty.</p>
 
-        </div>
-        <div class="col-lg-6 col-md-12 n-right tex-left" style="width: 80%; float: left">
-            <h3 class="tittle1 foot mb-md-5 mb-4 text-white" style="margin-top: 20px">Đăng ký theo dõi</h3>
-            <form action="#" method="post">
-                <div class="form-group d-flex">
-                    <input class="form-control" type="email" name="Email" placeholder=" Email Address" required="">
-                    <input class="form-control submit text-uppercase" type="submit" value="Subscribe">
-                </div>
-            </form>
-        </div>
     </div>
-    <div class="row" style="background-color: rgb(29, 126, 182) ">
-        <div class="col-sm-12 col-md-8 copyright-8">
-            <p class="copy-right mt-2" style="text-align: center">© 2018 Subject. All Rights Reserved | Design by
-                <a href="http://w3layouts.com/"> The-Flash </a>
-            </p>
-        </div>
-        <div class="col-sm-12 col-md-4 fa-icon">
-            <ul class="social-icons scial justify-content-end">
-                <li class="mr-1"><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                <li class="mx-1"><a href="#"><span class="fab fa-twitter"></span></a></li>
-                <li class="mx-1"><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                <li class="mx-1"><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-            </ul>
-        </div>
+    <div class="col-lg-6 col-md-12 n-right tex-left" style="width: 80%; float: left">
+        <h3 class="tittle1 foot mb-md-5 mb-4 text-white" style="margin-top: 20px">Đăng ký theo dõi</h3>
+        <form action="#" method="post">
+            <div class="form-group d-flex">
+                <input class="form-control" type="email" name="Email" placeholder=" Email Address" required="">
+                <input class="form-control submit text-uppercase" type="submit" value="Subscribe">
+            </div>
+        </form>
     </div>
+</div>
+<div class="row" style="background-color: rgb(29, 126, 182) ">
+    <div class="col-sm-12 col-md-8 copyright-8">
+        <p class="copy-right mt-2" style="text-align: center">© 2018 Subject. All Rights Reserved | Design by
+            <a href="http://w3layouts.com/"> The-Flash </a>
+        </p>
+    </div>
+    <div class="col-sm-12 col-md-4 fa-icon">
+        <ul class="social-icons scial justify-content-end">
+            <li class="mr-1"><a href="#"><span class="fab fa-facebook-f"></span></a></li>
+            <li class="mx-1"><a href="#"><span class="fab fa-twitter"></span></a></li>
+            <li class="mx-1"><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
+            <li class="mx-1"><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
+        </ul>
+    </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

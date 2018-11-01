@@ -22,29 +22,45 @@
                             @csrf
                             <div class="form-group">
                                 <label for="inputTitle">Tên tác giả</label>
+                                @if($errors->has('name'))
+                                    <p class="text-danger" style="color: red">
+                                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                                        {{ $errors->first('name') }}
+                                    </p>
+                                @endif
                                 <input type="text"
                                        class="form-control"
                                        id="inputName"
                                        name="inputName"
-                                       placeholder="Nhập tên tác giả"
-                                       required>
+                                       placeholder="Nhập tên tác giả">
                             </div>
                             <div class="form-group">
                                 <label for="inputContent">Ngày sinh</label>
+                                @if($errors->has('dob'))
+                                    <p class="text-danger" style="color: red">
+                                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                                        {{ $errors->first('dob') }}
+                                    </p>
+                                @endif
                                 <input type="date" class="form-control"
                                        id="inputDob"
                                        name="inputDob"
-                                       placeholder="Ngày sinh"
-                                       required>
+                                       placeholder="Ngày sinh">
                             </div>
                             <div class="form-group">
                                 <label for="inputContent">Địa chỉ</label>
+                                @if($errors->has('address'))
+                                    <p class="text-danger" style="color: red">
+                                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                                        {{ $errors->first('address') }}
+                                    </p>
+                                @endif
                                 <textarea class="form-control"
                                           id="inputAddress"
                                           name="inputAddress"
                                           placeholder="Nhập địa chỉ"
-                                          rows="3"
-                                          required></textarea>
+                                          rows="3">
+                                </textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Ảnh:</label>

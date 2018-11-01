@@ -14,8 +14,17 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::prefix('authors')->group(function () {
-    Route::get('/', 'AuthorController@index')->name('author_index');
+Route::get('/login', function (){
+   return view('index');
+})->name('login');
+
+Route::post('/check-login', 'AuthController@login')->name('check_login');
+
+Route::get('/logout', 'HomeController@getLogout')->name('logout');
+
+
+Route::group(['middleware' => 'auth', 'timeout'], function (){
+    Route::get('/authors', 'AuthorController@index')->name('author_index');
 
     Route::get('/create', 'AuthorController@create')->name('author_create');
 
@@ -29,8 +38,8 @@ Route::prefix('authors')->group(function () {
 
 });
 
-Route::group(['prefix' => 'categories'], function (){
-    Route::get('/', 'CategoryController@index')->name('categories_index');
+Route::group(['middleware' => 'auth', 'timeout'], function (){
+    Route::get('/categories', 'CategoryController@index')->name('categories_index');
 
    Route::get('/create-category', 'CategoryController@create')->name('category_create');
 
@@ -43,8 +52,8 @@ Route::group(['prefix' => 'categories'], function (){
    Route::get('/delete-category/{id}','CategoryController@destroy')->name('category_destroy');
 });
 
-Route::group(['prefix' => 'books'], function (){
-   Route::get('/','BooksController@index')->name('books_index');
+Route::group(['middleware' => 'auth', 'timeout'], function (){
+   Route::get('/books','BooksController@index')->name('books_index');
 
    Route::get('/detail-book/{id}','BooksController@show')->name('book_show');
 
@@ -65,16 +74,15 @@ Route::group(['prefix' => 'books'], function (){
 });
 
 
-Route::get('/check-student', function () {
-   return view('bills.studentCode');
-})->name('student_check');
 
-Route::group(['prefix' => 'bills'], function (){
-    Route::get('/', 'BillController@index')->name('bills_index');
+Route::group(['middleware' => 'auth', 'timeout'], function (){
+    Route::get('/check-student', 'BillController@getAuthentication')->name('student_check');
+
+    Route::get('/bills', 'BillController@index')->name('bills_index');
 
     Route::match(['get', 'post'],'/add-bill', 'BillController@store')->name('bill_store');
 
-    Route::get('/check-student', 'BillController@authentication')->name('authentication');
+    Route::get('/authentication', 'BillController@authentication')->name('authentication');
 
     Route::get('/delete-bill/{id}', 'BillController@destroy')->name('bill_destroy');
 
@@ -87,8 +95,8 @@ Route::group(['prefix' => 'bills'], function (){
 
 
 //trang hien thi
-Route::group(['prefix' => 'home'], function (){
-    Route::get('/','StudentController@index')->name('student_index');
+Route::group(['middleware' => 'auth', 'timeout'], function (){
+    Route::get('/home','StudentController@index')->name('student_index');
 
     Route::get('/{id}/books', 'StudentController@category_list_book')->name('student_category_book');
 

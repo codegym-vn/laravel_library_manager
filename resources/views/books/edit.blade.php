@@ -23,15 +23,33 @@
                             @csrf
                             <div class="form-group">
                                 <label>Tên sách:</label>
+                                @if($errors->has('name'))
+                                    <p class="text-danger" style="color: red">
+                                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                                        {{ $errors->first('name') }}
+                                    </p>
+                                @endif
                                 <input type="text" class="form-control" name="name" value="{{ $book->name }}">
                             </div>
                             <div class="form-group">
                                 <label>Tóm tắt nội dung:</label>
+                                @if($errors->has('description'))
+                                    <p class="text-danger" style="color: red">
+                                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                                        {{ $errors->first('description') }}
+                                    </p>
+                                @endif
                                 <textarea type="text" class="form-control" name="description" rows="3"
                                           value="">{{ $book->description }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Số lương:</label>
+                                @if($errors->has('quantity'))
+                                    <p class="text-danger" style="color: red">
+                                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                                        {{ $errors->first('quantity') }}
+                                    </p>
+                                @endif
                                 <input type="text" class="form-control" name="quantity" value="{{ $book->quantity }}">
                             </div>
                             <div class="form-group">
@@ -60,7 +78,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Ảnh:</label>
-                                <input type="file" id="chooseimg" name="image" class="form-control-file"  required>
+                                <input type="file" id="chooseimg" name="image" class="form-control-file">
                                     <img src="{{ asset('storage/'.$book->image) }}" id="image" style="width: 130px; height: 160px">
                             </div>
                             <button type="submit" class="btn btn-secondary">Sửa</button>
