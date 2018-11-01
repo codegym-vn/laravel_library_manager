@@ -27,6 +27,7 @@
                     @endif
                 </div>
                 <div class="col-12">
+                    <p>Số lượt mượn sách: <label>{{ $count }}</label></p>
                     <table class="table table-bordered data-table">
                         <thead>
                         <tr class="bg-secondary">
@@ -54,7 +55,7 @@
                                     <td style="text-align: center">{{ $bill->borrowed_day }}</td>
                                     <td style="text-align: center">{{ $bill->pay_day }}</td>
                                     <td style="text-align: center">
-                                        <a href="{{ route('book_show', $bill->id) }}" class="text-dark btn">
+                                        <a href="{{ route('bill_details', $bill->id) }}" class="text-dark btn">
                                             <i class="fas fa-eye"></i></a>
                                         <a href="{{ route('bill_destroy', $bill->id) }}" class="text-danger btn"
                                            onclick="return confirm('Bạn chắc chắn muốn xóa?')"><i

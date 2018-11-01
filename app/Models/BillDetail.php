@@ -10,6 +10,11 @@ class BillDetail extends Model
 
     public function bill ()
     {
-        return $this->hasOne('App\Models\Bill', 'id_bill');
+        return $this->belongsTo('App\Models\Bill', 'id_bill');
+    }
+
+    public function books()
+    {
+        return $this->belongsTo('App\Models\Book', 'id_book');
     }
 }

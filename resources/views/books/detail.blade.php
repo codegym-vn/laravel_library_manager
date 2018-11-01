@@ -26,9 +26,11 @@
     <section>
         <div class="row">
             <div class="col-5 bg-light border-right " style="min-height: 900px; max-height: 100%">
-                <div style="text-align: center ">
-                    <img src="{{ asset('storage/'.$book->image) }}" alt=""
-                         style="width: 615px; height: 900px">
+                <div class="row">
+                    <div>
+                        <img src="{{ asset('storage/'.$book->image) }}" alt=""
+                             style="width: 615px; height: 900px">
+                    </div>
                 </div>
             </div>
             <div class="col-7 bg-info " style="max-height: 100%">

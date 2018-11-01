@@ -41,7 +41,8 @@ class BillController extends Controller
     public function index ()
     {
         $bills = Bill::orderBy('id', 'desc')->get();
-        return view('bills.list', compact('bills'));
+        $count = count($bills);
+        return view('bills.list', compact('bills', 'count'));
     }
 
     public function store (Request $request)
