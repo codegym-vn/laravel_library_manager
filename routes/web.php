@@ -20,8 +20,10 @@ Route::get('/login', function (){
 
 Route::post('/check-login', 'AuthController@login')->name('check_login');
 
+Route::get('/logout', 'HomeController@getLogout')->name('logout');
 
-Route::group(['middleware' => 'auth'], function (){
+
+Route::group(['middleware' => 'auth', 'timeout'], function (){
     Route::get('/authors', 'AuthorController@index')->name('author_index');
 
     Route::get('/create', 'AuthorController@create')->name('author_create');
@@ -36,7 +38,7 @@ Route::group(['middleware' => 'auth'], function (){
 
 });
 
-Route::group(['middleware' => 'auth'], function (){
+Route::group(['middleware' => 'auth', 'timeout'], function (){
     Route::get('/categories', 'CategoryController@index')->name('categories_index');
 
    Route::get('/create-category', 'CategoryController@create')->name('category_create');
@@ -50,7 +52,7 @@ Route::group(['middleware' => 'auth'], function (){
    Route::get('/delete-category/{id}','CategoryController@destroy')->name('category_destroy');
 });
 
-Route::group(['middleware' => 'auth'], function (){
+Route::group(['middleware' => 'auth', 'timeout'], function (){
    Route::get('/books','BooksController@index')->name('books_index');
 
    Route::get('/detail-book/{id}','BooksController@show')->name('book_show');
@@ -73,7 +75,7 @@ Route::group(['middleware' => 'auth'], function (){
 
 
 
-Route::group(['middleware' => 'auth'], function (){
+Route::group(['middleware' => 'auth', 'timeout'], function (){
     Route::get('/check-student', 'BillController@getAuthentication')->name('student_check');
 
     Route::get('/bills', 'BillController@index')->name('bills_index');
@@ -90,7 +92,7 @@ Route::group(['middleware' => 'auth'], function (){
 
 
 //trang hien thi
-Route::group(['middleware' => 'auth'], function (){
+Route::group(['middleware' => 'auth', 'timeout'], function (){
     Route::get('/home','StudentController@index')->name('student_index');
 
     Route::get('/{id}/books', 'StudentController@category_list_book')->name('student_category_book');
