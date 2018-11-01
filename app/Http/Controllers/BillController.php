@@ -11,10 +11,12 @@ use Illuminate\Support\Facades\Session;
 
 class BillController extends Controller
 {
-    /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+    public function getAuthentication ()
+    {
+        return view('bills.studentCode');
+
+    }
+
     public function authentication (Request $request)
     {
         try {
@@ -125,7 +127,6 @@ class BillController extends Controller
             $student->save();
         }
 
-
         $billDetail = BillDetail::where('id_bill', $bill->id)->first();
         $billDetail->delete();
         $bill->delete();
@@ -134,4 +135,5 @@ class BillController extends Controller
         Session::flash('success', 'Xóa thành công');
         return redirect()->route('bills_index');
     }
+
 }

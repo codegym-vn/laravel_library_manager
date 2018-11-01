@@ -22,10 +22,10 @@ class StudentController extends Controller
     {
         $books_featured = Book::paginate(5);
         $books = Book::orderBy('created_at', 'dsc')->take(6)->get();
-        $authors = Author::Where('name', 'Kim Dung')->take(4)->get();
-//        $book_id_author = Book::groupBy('id_author', '>', '5')->take(4)->get();
+        $author = Author::Where('name', 'Kim Dung')->take(4)->get();
+        $authors = Author::all();
         $categories = Category::all();
-        return view('index_layouts.index', compact('books', 'categories', 'books_featured', 'authors', 'book_id_author'));
+        return view('index_layouts.index', compact('books', 'categories', 'books_featured', 'authors', 'book_id_author', 'author'));
     }
 
     public function category_list_book ($id)
