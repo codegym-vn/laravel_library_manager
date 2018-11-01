@@ -22,7 +22,13 @@
                             @csrf
                             <div class="form-group">
                                 <label>Tên thể loại:</label>
-                                <input type="text" class="form-control" name="name" value="{{ $category->name }}" required>
+                                @if($errors->has('name'))
+                                    <p class="text-danger" style="color: red">
+                                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                                        {{ $errors->first('name') }}
+                                    </p>
+                                @endif
+                                <input type="text" class="form-control" name="name" value="{{ $category->name }}">
                             </div>
                             <button type="submit" class="btn btn-primary">Sửa</button>
                             <button class="btn btn-primary" onclick="window.history.go(-1); return false;">Hủy

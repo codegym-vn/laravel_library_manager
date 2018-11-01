@@ -10,6 +10,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class BooksController extends Controller
 {
@@ -22,7 +23,7 @@ class BooksController extends Controller
     {
 //        $one_days_ago = date('Y-m-d', strtotime('-1 days'));
 
-        $books = Book::orderBy('id','desc')->get();
+        $books = Book::orderBy('id', 'desc')->get();
         $authors = Author::all();
         $categories = Category::all();
         return view('books.list', compact('books', 'authors', 'categories'));
@@ -45,10 +46,11 @@ class BooksController extends Controller
         if ($authorFilter && !$categoryFilter) {
             $books = Book::where('id_author', $authorFilter->id)->orderBy('name', 'asc')->paginate(2);
             $totalBookFilter = count($books);
-        } else if (!$authorFilter && $categoryFilter){
+        } else if (!$authorFilter && $categoryFilter) {
             $books = Book::where('id_category', $categoryFilter->id)->orderBy('name', 'asc')->paginate(2);
             $totalBookFilter = count($books);
-        } if ($authorFilter && $categoryFilter){
+        }
+        if ($authorFilter && $categoryFilter) {
             $books = Book::where('id_author', $authorFilter->id)->where('id_category', $categoryFilter->id)->orderBy('name', 'asc')->paginate(2);
             $totalBookFilter = count($books);
         }
@@ -57,7 +59,7 @@ class BooksController extends Controller
         $authors = Author::all();
         $categories = Category::all();
 
-        return view('books.list', compact( 'books','authors', 'totalBookFilter', 'authorFilter', 'categoryFilter', 'categories'));
+        return view('books.list', compact('books', 'authors', 'totalBookFilter', 'authorFilter', 'categoryFilter', 'categories'));
     }
 
     /**
@@ -80,26 +82,48 @@ class BooksController extends Controller
      */
     public function store (Request $request)
     {
-        $book = new Book();
-        $book->name = $request->input('name');
-        $book->description = $request->input('description');
-        $book->quantity = $request->input('quantity');
-        $book->id_category = $request->input('id_category');
-        $book->id_author = $request->input('id_author');
+        $rules = [
+            'name' => 'required|min:3|max:20',
+            'description' => 'required',
+            'quantity' => 'required|numeric'
+        ];
 
-        //upload file
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $path = $image->store('images', 'public');
-            $book->image = $path;
+        $messages = [
+            'name.required' => 'Tên sách không được phép để trống!',
+            'name.min' => 'Trường tên phải chứa ít nhất 3 ký tự!',
+            'name.max' => 'Trường tên không được phép vượt quá 20 ký tự!',
+            'description.required' => 'Nội dung không được phép để trống!',
+            'quantity.required' => 'Số lượng không được phép để trống!',
+            'quantity.numeric' => 'Số lượng phải nhập số không được nhập chữ!'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            // tra ve true neu validate bi loi
+            return redirect()->back()->withErrors($validator)->withInput();
+        } else {
+            $book = new Book();
+            $book->name = $request->input('name');
+            $book->description = $request->input('description');
+            $book->quantity = $request->input('quantity');
+            $book->id_category = $request->input('id_category');
+            $book->id_author = $request->input('id_author');
+
+            //upload file
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $path = $image->store('images', 'public');
+                $book->image = $path;
+            }
+
+            $book->save();
+
+            //dung session de dua ra thong bao
+            Session::flash('success', 'Tạo mới thành công');
+            //tao moi xong quay ve trang danh sach task
+            return redirect()->route('books_index');
         }
-
-        $book->save();
-
-        //dung session de dua ra thong bao
-        Session::flash('success', 'Tạo mới thành công');
-        //tao moi xong quay ve trang danh sach task
-        return redirect()->route('books_index');
     }
 
     /**
@@ -111,7 +135,7 @@ class BooksController extends Controller
     public function show ($id)
     {
         $book = Book::FindOrFail($id);
-        return view('books.detail',compact('book'));
+        return view('books.detail', compact('book'));
     }
 
     /**
@@ -137,30 +161,52 @@ class BooksController extends Controller
      */
     public function update (Request $request, $id)
     {
-        $book = Book::FindOrFail($id);
-        $book->name = $request->input('name');
-        $book->description = $request->input('description');
-        $book->quantity = $request->input('quantity');
-        $book->id_category = $request->input('id_category');
-        $book->id_author = $request->input('id_author');
+        $rules = [
+            'name' => 'required|min:3|max:30',
+            'description' => 'required',
+            'quantity' => 'required|numeric'
+        ];
 
-        //cap nhap anh
-        if ($request->hasFile('image')) {
-            //xoa anh cu neu co
-            $currentImg = $book->image;
-            if ($currentImg) {
-                Storage::delete('/public/' . $currentImg);
+        $messages = [
+            'name.required' => 'Tên sách không được phép để trống!',
+            'name.min' => 'Trường tên phải chứa ít nhất 3 ký tự!',
+            'name.max' => 'Trường tên không được phép vượt quá 30 ký tự!',
+            'description.required' => 'Nội dung không được phép để trống!',
+            'quantity.required' => 'Số lượng không được phép để trống!',
+            'quantity.numeric' => 'Số lượng phải nhập số không được nhập chữ!',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            // tra ve true neu validate bi loi
+            return redirect()->back()->withErrors($validator)->withInput();
+        } else {
+            $book = Book::FindOrFail($id);
+            $book->name = $request->input('name');
+            $book->description = $request->input('description');
+            $book->quantity = $request->input('quantity');
+            $book->id_category = $request->input('id_category');
+            $book->id_author = $request->input('id_author');
+
+            //cap nhap anh
+            if ($request->hasFile('image')) {
+                //xoa anh cu neu co
+                $currentImg = $book->image;
+                if ($currentImg) {
+                    Storage::delete('/public/' . $currentImg);
+                }
+                //cap nhap anh moi
+                $image = $request->file('image');
+                $path = $image->store('images', 'public');
+                $book->image = $path;
             }
-            //cap nhap anh moi
-            $image = $request->file('image');
-            $path = $image->store('images', 'public');
-            $book->image = $path;
-        }
-        $book->save();
+            $book->save();
 
-        //dung session de dua ra thong bao
-        Session::flash('success', 'Cập nhật thành công');
-        return redirect()->route('books_index');
+            //dung session de dua ra thong bao
+            Session::flash('success', 'Cập nhật thành công');
+            return redirect()->route('books_index');
+        }
     }
 
     /**

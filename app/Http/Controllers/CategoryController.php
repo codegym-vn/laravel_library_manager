@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -14,9 +15,9 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index ()
     {
-        $categories = Category::orderBy('id','desc')->get();
+        $categories = Category::orderBy('id', 'desc')->get();
         return view('categories.list', compact('categories'));
     }
 
@@ -25,7 +26,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create ()
     {
         return view('categories.create');
     }
@@ -33,28 +34,39 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store (Request $request)
     {
-        $category = new Category();
-        $category->name = $request->input('name');
-        $category->save();
+        $rules = ['name' => 'required|min:3|max:20',];
 
-        //dung session de dua ra thong bao
-        Session::flash('success', 'Tạo mới thành công thể loại');
-        //tao moi xong quay ve trang danh sach task
-        return redirect()->route('categories_index');
+        $messages = ['name.required' => 'Tên sách không được phép để trống!', 'name.min' => 'Trường tên phải chứa ít nhất 3 ký tự!', 'name.max' => 'Trường tên không được phép vượt quá 20 ký tự!',];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            // tra ve true neu validate bi loi
+            return redirect()->back()->withErrors($validator)->withInput();
+        } else {
+            $category = new Category();
+            $category->name = $request->input('name');
+            $category->save();
+
+            //dung session de dua ra thong bao
+            Session::flash('success', 'Tạo mới thành công thể loại');
+            //tao moi xong quay ve trang danh sach task
+            return redirect()->route('categories_index');
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show ($id)
     {
         //
     }
@@ -62,10 +74,10 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit ($id)
     {
         $category = Category::FindOrFail($id);
         return view('categories.edit', compact('category'));
@@ -74,35 +86,47 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update (Request $request, $id)
     {
-        $category = Category::FindOrFail($id);
-        $category->name = $request->input('name');
-        $category->save();
+        $rules = ['name' => 'required|min:3|max:20',];
 
-        //dung session de dua ra thong bao
-        Session::flash('success', 'Cập nhật thành công thể loại');
-        //tao moi xong quay ve trang danh sach task
-        return redirect()->route('categories_index');
+        $messages = ['name.required' => 'Tên sách không được phép để trống!', 'name.min' => 'Trường tên phải chứa ít nhất 3 ký tự!', 'name.max' => 'Trường tên không được phép vượt quá 20 ký tự!',];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            // tra ve true neu validate bi loi
+            return redirect()->back()->withErrors($validator)->withInput();
+        } else {
+
+            $category = Category::FindOrFail($id);
+            $category->name = $request->input('name');
+            $category->save();
+
+            //dung session de dua ra thong bao
+            Session::flash('success', 'Cập nhật thành công thể loại');
+            //tao moi xong quay ve trang danh sach task
+            return redirect()->route('categories_index');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy ($id)
     {
         $category = Category::FindOrFail($id);
         $book = Book::where("id_category", $category->id)->first();
 
         if ($book) {
-            Session::flash('error','Không được phép xoá thể loại, nếu xoá sẽ ảnh hưởng tới dữ liệu!');
+            Session::flash('error', 'Không được phép xoá thể loại, nếu xoá sẽ ảnh hưởng tới dữ liệu!');
         } else {
             dd(11);
             $category->delete();

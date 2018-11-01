@@ -20,25 +20,41 @@
                     <div class="col-12">
                         <form method="post" action="{{ route('book_store') }}" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group">
-                                <label>Tên sách:</label>
-                                <input type="text" class="form-control" name="name" placeholder="Nhập tên sách" required>
-                            </div>
 
                             <div class="form-group">
+                                <label>Tên sách:</label>
+                                @if($errors->has('name'))
+                                    <p class="text-danger" style="color: red">
+                                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                                        {{ $errors->first('name') }}
+                                    </p>
+                                @endif
+                                <input type="text" class="form-control" name="name" placeholder="Nhập tên sách">
+                            </div>
+                            <div class="form-group">
                                 <label>Tóm tắt nội dung:</label>
+                                @if($errors->has('description'))
+                                    <p class="text-danger" style="color: red">
+                                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                                        {{ $errors->first('description') }}
+                                    </p>
+                                @endif
                                 <textarea class="form-control"
                                           id="description"
                                           name="description"
                                           placeholder="Tóm tắt nội dung"
                                           rows="3"
-                                          required></textarea>
+                                          ></textarea>
                             </div>
-
                             <div class="form-group">
                                 <label>Số lương:</label>
-                                <input type="text" class="form-control" name="quantity" placeholder="Nhập số lượng"
-                                       required>
+                                @if($errors->has('quantity'))
+                                    <p class="text-danger" style="color: red">
+                                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                                        {{ $errors->first('quantity') }}
+                                    </p>
+                                @endif
+                                <input type="text" class="form-control" name="quantity" placeholder="Nhập số lượng">
                             </div>
                             <div class="form-group">
                                 <label for="sel1">Thể loại:</label>

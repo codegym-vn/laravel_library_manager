@@ -79,7 +79,13 @@
                             @csrf
                             <div class="form-group">
                                 <label for="sel1">Sách:</label>
-                                <input class="form-control" type="text" id="txt_ide" list="ide"  name="id_book" required>
+                                @if($errors->has('id_book'))
+                                    <p class="text-danger" style="color: red">
+                                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                                        {{ $errors->first('id_book') }}
+                                    </p>
+                                @endif
+                                <input class="form-control" type="text" id="txt_ide" list="ide"  name="id_book">
                                 <datalist id="ide">
                                     @foreach($books as $book)
                                         <option value="{{ $book->id }}">{{ $book->name }}</option>
@@ -88,20 +94,30 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputContent">Ngày mượn:</label>
+                                @if($errors->has('borrowed_day'))
+                                    <p class="text-danger" style="color: red">
+                                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                                        {{ $errors->first('borrowed_day') }}
+                                    </p>
+                                @endif
                                 <input type="date" class="form-control"
                                        id="borrowed_day"
                                        name="borrowed_day"
-                                       value="{{ date('Y-m-d') }}"
-                                       required>
+                                       value="{{ date('Y-m-d') }}">
                             </div>
                             <div class="col-12">
                             </div>
                             <div class="form-group">
                                 <label for="inputContent">Ngày trả:</label>
+                                @if($errors->has('pay_day'))
+                                    <p class="text-danger" style="color: red">
+                                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                                        {{ $errors->first('pay_day') }}
+                                    </p>
+                                @endif
                                 <input type="date" class="form-control"
                                        id="pay_day"
-                                       name="pay_day"
-                                       required>
+                                       name="pay_day">
                             </div>
                             @if (Session::has('error'))
                                 <p class="text-danger">
