@@ -24,7 +24,7 @@ class StudentController extends Controller
     {
         $books_featured = Book::paginate(5);
         $books = Book::orderBy('created_at', 'desc')->take(6)->get();
-        $author_f = Author::Where('name', 'Kim Dung')->take(4)->get();
+        $author_f = Author::orderBy('created_at', 'desc')->take(1)->get();
         $authors = Author::all();
         $categories = Category::all();
         return view('index_layouts.index', compact('books', 'categories', 'books_featured', 'author_f', 'book_id_author', 'authors'));
@@ -36,7 +36,8 @@ class StudentController extends Controller
         $categories = Category::all();
         $category = Category::findOrFail($id);
         $books = Book::where('id_category', $category->id)->get();
-        return view('index_layouts.list_book', compact('category', 'books', 'categories', 'books_featured'));
+        $count = count($books);
+        return view('index_layouts.list_book', compact('category', 'books', 'categories', 'books_featured', 'count'));
     }
 
     public function list_author()
@@ -45,6 +46,15 @@ class StudentController extends Controller
         $authors = Author::paginate(12);
         $categories = Category::all();
         return view('index_layouts.list_author', compact('authors', 'categories', 'books_featured'));
+    }
+
+    public function author_list_book($id){
+        $books_featured = Book::paginate(5);
+        $categories = Category::all();
+        $author = Author::findOrFail($id);
+        $books = Book::where('id_author',$author->id)->get();
+        $count = count($books);
+        return view('index_layouts.book_of_author', compact('author', 'categories', 'books_featured','books','count'));
     }
 
     public function details_book($id)
