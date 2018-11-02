@@ -24,15 +24,13 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return[
-            [
+
                 'name_student' => 'required|min:2|max:255',
                 'class' => 'required|min:2',
                 'phone' => 'required|numeric|min:2',
                 'email' => 'required|email|max:50|min:2',
-                'name_book' => 'required',
-                'borrowed_day' => 'requied',
-            ],
-
+                'name_book' => 'required|min:10',
+                'borrowed_day' => 'required',
         ];
 
     }

@@ -40,14 +40,8 @@
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle">
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+                            @if ($errors->has('name_student'))
+                                {{ $errors->first('name_student') }}
                             @endif
                         </span>
                     </div>
@@ -69,14 +63,8 @@
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle">
-                             @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+                             @if ($errors->has('class'))
+                                {{ $errors->first('class') }}
                             @endif
                         </span>
                     </div>
@@ -98,14 +86,8 @@
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle">
-                             @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+                             @if ($errors->has('phone'))
+                                {{ $errors->first('phone') }}
                             @endif
                         </span>
                     </div>
@@ -127,14 +109,8 @@
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle">
-                             @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+                             @if ($errors->has('email'))
+                                {{ $errors->first('email') }}
                             @endif
                         </span>
                     </div>
@@ -150,7 +126,7 @@
                             <div class="input-group-addon" style="width: 2.6rem"></div>
                             <input class="form-control" type="text" id="txt_ide" list="ide"  name="name_book" >
                             <datalist id="ide">
-                                @foreach($books as $book)
+                               @foreach($books as $book)
                                     <option>{{ $book->name }}</option>
                                 @endforeach
                             </datalist>
@@ -160,14 +136,8 @@
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle">
-                             @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+                             @if ($errors->has('name_book'))
+                                {{ $errors->first('name_book') }}
                             @endif
                         </span>
                     </div>
@@ -189,14 +159,8 @@
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle">
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+                            @if ($errors->has('borrowed_day'))
+                                {{ $errors->first('borrowed_day') }}
                             @endif
                         </span>
                     </div>

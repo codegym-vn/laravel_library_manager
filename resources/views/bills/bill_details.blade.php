@@ -4,6 +4,17 @@
     Details
 @endsection
 @section('content')
+    <style>
+        .table-bordered th{
+            text-align: center  ;
+        }
+    </style>
+    @if (Session::has('success'))
+        <p class="text-danger">
+            <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+            {{ Session::get('success') }}
+        </p>
+    @endif
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 menu">
@@ -24,17 +35,27 @@
                         <th scope="col">Ảnh</th>
                         <th scope="col">Tên sản phẩm</th>
                         <th scope="col">Số lượng</th>
+                        <th scope="col">Trạng thái</th>
                         <th scope="col">ngày mượn</th>
                         <th scope="col">ngày trả</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <th scope="row" class="col-2 img"><img src="{{ asset('storage/' . $bill->books->image) }}"></th>
-                        <td>{{ $bill->books->name }}</td>
-                        <td>1</td>
-                        <td>{{ $bill->bill->borrowed_day }}</td>
-                        <td>{{ $bill->bill->pay_day }}</td>
+                        <td scope="row" class="col-2 img"><img src="{{ asset('storage/' . $bill->books->image) }}"></td>
+                        <td style="text-align: center">{{ $bill->books->name }}</td>
+                        <td style="text-align: center">1</td>
+                        @if($bill->bill->status == 'Đang mượn' && $bill->bill->pay_day <  date('Y-m-d'))
+                            <td style="text-align: center">
+                                Qúa hạn
+                            </td>
+                        @else
+                            <td style="text-align: center">
+                                {{ $bill->bill->status }}
+                            </td>
+                        @endif
+                        <td style="text-align: center">{{ $bill->bill->borrowed_day }}</td>
+                        <td style="text-align: center">{{ $bill->bill->pay_day }}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -45,9 +66,7 @@
                             <div class="form-group" style="width: 300px">
                                     <select name="status">
                                         <option value="{{ $bill->bill->status  }}">{{ $bill->bill->status }} </option>
-                                        <option value="Đang mượn">Đang mượn</option>
                                         <option value="Đã trả">Đã trả</option>
-                                        <option value="Quá hạn">Quá hạn</option>
                                     </select>
                             </div>
                             <button type="submit" class="btn btn-secondary">Đồng ý</button>
