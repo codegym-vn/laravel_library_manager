@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
-class AuthController extends Controller
+class LoginController extends Controller
 {
     /**
      * @param Request $request
@@ -39,7 +39,8 @@ class AuthController extends Controller
                 foreach ($login as $user) {
                     if ($user->role == 1) {
                         return redirect()->route('books_index');
-                    } else if ($user->role == 2) {
+                    }
+                    else if ($user->role == 2) {
                         return redirect()->route('student_index');
                     }
                 }

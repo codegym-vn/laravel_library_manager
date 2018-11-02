@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
           integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/datatables.min.css') }}">
 
     <style>
         .navbar-dark ul li{
@@ -16,6 +17,7 @@
         .navbar-dark ul{
             margin-top: 10px;
         }
+
     </style>
 
 
@@ -39,7 +41,7 @@
     </nav>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2" style="min-height: 700px; background-color: #7c848c">
+            <div class="col-md-2" style="min-height: 900px; background-color: #7c848c">
                     <div class="row">
                         <hr>
                         <nav class="navbar navbar-expand-lg navbar-dark">
@@ -49,7 +51,7 @@
                             </button>
                             <div class="collapse navbar-collapse" id="navbarNavDropdown" style="width: 100%; height: 100%">
                                 <ul class="nav flex-column">
-                                    <li class="nav-item">
+                                    <li class="nav-item" style="margin-top: 20px">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                 <a id="button1" class="btn bg-light" style="width: 11em">Quản lý sách</a>
@@ -61,7 +63,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item" style="margin-top: 20px">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                 <a id="button1" class="btn bg-light" style="width: 11em">Quản lý thể loại</a>
@@ -73,7 +75,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item" style="margin-top: 20px">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                 <a id="button1" class="btn bg-light" style="width: 11em">Quản lý tác giả</a>
@@ -85,7 +87,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item" style="margin-top: 20px">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                 <a id="button1" class="btn bg-light" style="width: 11em">Phiếu mượn</a>

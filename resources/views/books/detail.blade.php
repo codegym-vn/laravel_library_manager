@@ -29,7 +29,7 @@
                 <div class="row">
                     <div>
                         <img src="{{ asset('storage/'.$book->image) }}" alt=""
-                             style="width: 615px; height: 900px">
+                             style="width: 640px; height: 900px">
                     </div>
                 </div>
             </div>
