@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\RegisterBook;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 
 class StudentController extends Controller
@@ -72,7 +74,7 @@ class StudentController extends Controller
         return view('index_layouts.register_book', compact('categories', 'books'));
     }
 
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
             $register = new RegisterBook();
             $register->student_name = $request->input('name_student');
@@ -83,7 +85,9 @@ class StudentController extends Controller
             $register->borrowed_day = $request->input('borrowed_day');
             $register->save();
 
-            return redirect()->route('student_index');
+            $validated = $request->validated();
+            Session::flash('success', 'Tạo mới thành công');
+            return redirect()->back(compact('validated'));
         }
 }
 

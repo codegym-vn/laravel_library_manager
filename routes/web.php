@@ -91,6 +91,8 @@ Route::group(['middleware' => 'auth', 'timeout'], function (){
     Route::get('/bill-details/{id}', 'BillDetailController@show')->name('bill_details');
 
     Route::post('/bill-details/{id}', 'BillDetailController@update')->name('bill_details_update');
+
+    Route::get('/register-books','RegisterBookController@list')->name('register_book');
 });
 
 

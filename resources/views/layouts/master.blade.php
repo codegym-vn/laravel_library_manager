@@ -95,9 +95,12 @@
                                                 <a class="dropdown-item" href="{{ route('bills_index') }}">Danh sách phiếu mượn</a>
                                                 <a class="dropdown-item" href="{{ route('student_check') }}">Kiểm tra mã HV</a>
                                                 <a class="dropdown-item" href="{{ route('student_list') }}">Danh sách HV mượn sách</a>
+                                                <a class="dropdown-item" href="{{ route('register_book') }}">Đăng ký mượn sách</a>
+
                                             </div>
                                         </div>
                                     </li>
+
                                 </ul>
                             </div>
                         </nav>
