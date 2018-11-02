@@ -128,7 +128,6 @@ class CategoryController extends Controller
         if ($book) {
             Session::flash('error', 'Không được phép xoá thể loại, nếu xoá sẽ ảnh hưởng tới dữ liệu!');
         } else {
-            dd(11);
             $category->delete();
             //dung session de dua ra thong bao
             Session::flash('success', 'Xóa thành công thể loại');

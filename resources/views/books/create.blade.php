@@ -74,7 +74,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Ảnh:</label>
-                                <input type="file" id="chooseimg" name="image" class="form-control-file" required>
+                                <input type="file" id="chooseimg" name="image" class="form-control-file">
                                 <img id="image" style="width: 130px; height: 160px">
                             </div>
                             <button type="submit" class="btn btn-primary">Thêm mới</button>

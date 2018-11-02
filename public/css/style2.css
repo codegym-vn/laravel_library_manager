@@ -320,12 +320,14 @@ ul.scial{
 }
 .head_item img{
     width: 90%;
+    height: 175px;
     margin: 0;
     margin-left: 10px;
 }
 .book-list_item{
     border: 1px solid rgb(243, 244, 247);
     width: 150px;
+    height: 300px;
     margin-left: 20px;
 }
 .book-list_item a{

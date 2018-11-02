@@ -117,7 +117,8 @@
                                 @endif
                                 <input type="date" class="form-control"
                                        id="pay_day"
-                                       name="pay_day">
+                                       name="pay_day"
+                                       value="{{ date('Y-m-d', strtotime('7 days')) }}">
                             </div>
                             @if (Session::has('error'))
                                 <p class="text-danger">

@@ -103,6 +103,7 @@ class BooksController extends Controller
             // tra ve true neu validate bi loi
             return redirect()->back()->withErrors($validator)->withInput();
         } else {
+
             $book = new Book();
             $book->name = $request->input('name');
             $book->description = $request->input('description');

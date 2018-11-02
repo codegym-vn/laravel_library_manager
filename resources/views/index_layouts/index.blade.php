@@ -122,16 +122,16 @@
                     <div class="row">
                         <div class="col-sm-5 col-md-4 highlights-category">
                             <ul>
-                                <b><li>Chủ đề</li></b>
+                                <b><li style="text-align: center">Chủ đề</li></b>
                                 @foreach($categories as $key => $category)
                                     <a class="dropdown-item" href="{{ route('student_category_book', $category->id) }}"
-                                       style="color: black; font-size: 14px"><li>{{ $category->name }}</li></a>
+                                       style="color: black;text-align: center ; font-size: 14px"><li>{{ $category->name }}</li></a>
                                 @endforeach
                             </ul>
                         </div>
                         <div class="col-sm-5 col-md-4 highlights-category">
                             <ul>
-                                <b><li>Tác giả</li></b>
+                                <b><li style="text-align: center">Tác giả</li></b>
                                 @foreach($authors as $key => $author)
                                     <a class="dropdown-item" href="{{ route('student_author_book', $author->id) }}"
                                        style="color: black; font-size: 14px"><li>{{ $author->name }}</li></a>

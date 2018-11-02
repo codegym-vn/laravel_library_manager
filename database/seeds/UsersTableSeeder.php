@@ -26,10 +26,10 @@ class UsersTableSeeder extends Seeder
         App\User::create([
             'name' => 'nguyen anh tu',
             'email' => 'nguyentu@gmail.com',
-            'class' => 'C0718G2',
+            'class' => 'CGMD000269',
             'password' => bcrypt(123456),
             'role' => 2,
-            'phone' => '01689100011',
+            'phone' => '0969611663',
         ]);
     }
 }
