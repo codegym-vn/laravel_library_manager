@@ -6,6 +6,7 @@ use App\Models\Bill;
 use App\Models\BillDetail;
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class BillDetailController extends Controller
 {
@@ -30,6 +31,7 @@ class BillDetailController extends Controller
             $bill_update->status = $request->input('status');
             $bill_update->save();
         }
+        Session::flash('success', 'Tạo mới thành công');
         return redirect()->route('bill_details', $bill->id);
     }
 }

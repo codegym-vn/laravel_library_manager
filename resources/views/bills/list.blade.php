@@ -51,7 +51,15 @@
                                     <th scope="row" style="text-align: center">{{ ++$key }}</th>
                                     <td style="text-align: center">{{ $bill->book->name }}</td>
                                     <td style="text-align: center">{{ $bill->student->student_name }}</td>
-                                    <td style="text-align: center">{{ $bill->status }}</td>
+                                    @if($bill->status == 'Đang mượn' && $bill->pay_day <  date('Y-m-d'))
+                                        <td style="text-align: center">
+                                            Qúa hạn
+                                        </td>
+                                    @else
+                                        <td style="text-align: center">
+                                            {{ $bill->status }}
+                                        </td>
+                                    @endif
                                     <td style="text-align: center">{{ $bill->borrowed_day }}</td>
                                     <td style="text-align: center">{{ $bill->pay_day }}</td>
                                     <td style="text-align: center">

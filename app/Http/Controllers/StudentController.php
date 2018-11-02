@@ -85,7 +85,6 @@ class StudentController extends Controller
             $register->borrowed_day = $request->input('borrowed_day');
             $register->save();
 
-            $validated = $request->validated();
             Session::flash('success', 'Tạo mới thành công');
             return redirect()->back(compact('validated'));
         }
