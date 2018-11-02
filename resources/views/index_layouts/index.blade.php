@@ -2,6 +2,7 @@
 
 @section('body-content')
     <section id="banner">
+
         <div class="container">
             <div class="row banner-content">
                 <div class="col-sm-12 col-md-9 banner1">

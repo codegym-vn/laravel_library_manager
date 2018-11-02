@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bill;
 use App\Models\BillDetail;
 use App\Models\Book;
+use App\Models\RegisterBook;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -71,7 +72,6 @@ class BillController extends Controller
 
             $studentInput = $request->input('studentCode');
             $student = Student::where('student_code', $studentInput)->first();
-
             $borrowedDay = strtotime($request->input('borrowed_day'));
             $payDay = strtotime($request->input('pay_day'));
             $borrowingTime = $payDay - $borrowedDay;
@@ -99,6 +99,9 @@ class BillController extends Controller
                         $billDetail->id_bill = $bill->id;
                         $billDetail->save();
 
+                        $book = Book::findOrFail($request->id_book);
+                        $book->quantity = $book->quantity - 1;
+                        $book->save();
 
                         Session::flash('success', 'Tạo mới thành công');
                         return redirect()->route('bills_index');
@@ -157,5 +160,6 @@ class BillController extends Controller
         Session::flash('success', 'Xóa thành công');
         return redirect()->route('bills_index');
     }
+
 
 }
