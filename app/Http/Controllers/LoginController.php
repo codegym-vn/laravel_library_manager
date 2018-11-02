@@ -21,7 +21,8 @@ class LoginController extends Controller
             'email.required' => 'Email không được phép để trống!',
             'email.email' => 'Email không đúng định dạng!',
             'password.required' => 'Password không được phép để trống!',
-            'password.min' => 'Password phải chứa ít nhất 6 kí tự!'];
+            'password.min' => 'Password phải chứa ít nhất 6 kí tự!'
+        ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
 

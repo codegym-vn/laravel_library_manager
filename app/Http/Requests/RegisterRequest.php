@@ -13,7 +13,7 @@ class RegisterRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,42 +23,28 @@ class RegisterRequest extends FormRequest
      */
     public function rules()
     {
-        return
+        return[
             [
-                'name_student' => 'required|min:5|max:255',
-                'class' => 'required',
-                'phone' => 'required|numeric|',
-                'email' => 'required|email|max:50',
+                'name_student' => 'required|min:2|max:255',
+                'class' => 'required|min:2',
+                'phone' => 'required|numeric|min:2',
+                'email' => 'required|email|max:50|min:2',
                 'name_book' => 'required',
                 'borrowed_day' => 'requied',
-            ];
+            ],
 
-//            [
-//                'required' => ':attribute Không được để trống',
-//                'min' => ':attribute Không được nhỏ hơn :min',
-//                'max' => ':attribute Không được lớn hơn :max',
-//                'integer' => ':attribute Chỉ được nhập số',
-//                'email' => ':attribute Chỉ được nhập email',
-//            ],
-//
-//            [
-//                'name' => 'Tiêu đề',
-//                'class' => 'Lớp',
-//                'phone' => 'Số điện thoại',
-//                'email' => 'email',
-//                'name_book' => 'Tên sách',
-//                'borrowed_day' => 'Ngày mượn sách'
-//            ];
+        ];
+
     }
     public function messages()
     {
         return [
-            'name_student.require' => 'tên học viên không được để trống',
-            'class.require' => 'tên lớp không được để trống',
-            'phone.require' => 'số điện thoại không được để trống',
-            'email.require' => 'email không được để trống',
-            'name_book.require' => 'tên sách không được để trống',
-            'borrowed_day.require' => 'ngày mượn sách không được để trống',
+            'name_student.required' => 'tên học viên không được để trống',
+            'class.required' => 'tên lớp không được để trống',
+            'phone.required' => 'số điện thoại không được để trống',
+            'email.required' => 'email không được để trống',
+            'name_book.required' => 'tên sách không được để trống',
+            'borrowed_day.required' => 'ngày mượn sách không được để trống',
             'phone.numeric' => 'số điện thoại phải là số',
             'email.email' => 'email phải là dạng email',
         ];

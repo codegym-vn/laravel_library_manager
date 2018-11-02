@@ -16,6 +16,12 @@
                 <div class="col-md-6">
                     <h2>Đăng ký mượn sách</h2>
                     <hr>
+                    @if (Session::has('success'))
+                        <p class="text-success">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            {{ Session::get('success') }}
+                        </p>
+                    @endif
                 </div>
             </div>
             <div class="row">
@@ -26,7 +32,7 @@
                     <div class="form-group">
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon" style="width: 2.6rem"></div>
-                            <input type="text" name="name_student" class="form-control" id="name"
+                            <input type="text" name="name_student" value="{{ Auth::user()->name }}" class="form-control" id="name"
                                    placeholder="Nhập tên" autofocus>
                         </div>
                     </div>
@@ -34,6 +40,15 @@
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         </span>
                     </div>
                 </div>
@@ -47,13 +62,22 @@
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon" style="width: 2.6rem"></div>
                             <input type="text" name="class" class="form-control" id="name"
-                                   placeholder="Nhập lớp" autofocus>
+                                   value="{{ Auth::user()->class }}" autofocus>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle">
+                             @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         </span>
                     </div>
                 </div>
@@ -67,13 +91,22 @@
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon" style="width: 2.6rem"></div>
                             <input type="text" name="phone" class="form-control" id="name"
-                                   placeholder="Nhập số điện thoại" autofocus>
+                                   value="{{ Auth::user()->phone }}" autofocus>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle">
+                             @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         </span>
                     </div>
                 </div>
@@ -87,14 +120,22 @@
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon" style="width: 2.6rem"></div>
                             <input type="text" name="email" class="form-control" id="email"
-                                   placeholder="you@example.com" autofocus>
+                                   value="{{ Auth::user()->email }}" autofocus>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle">
-
+                             @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         </span>
                     </div>
                 </div>
@@ -110,7 +151,7 @@
                             <input class="form-control" type="text" id="txt_ide" list="ide"  name="name_book" >
                             <datalist id="ide">
                                 @foreach($books as $book)
-                                    <option value="{{ $book->id }}">{{ $book->name }}</option>
+                                    <option>{{ $book->name }}</option>
                                 @endforeach
                             </datalist>
                         </div>
@@ -119,7 +160,15 @@
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle">
-
+                             @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         </span>
                     </div>
                 </div>
@@ -132,7 +181,7 @@
                     <div class="form-group">
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div class="input-group-addon" style="width: 2.6rem"></div>
-                            <input type="date" name="borrowed_day" class="form-control" id="day"
+                            <input type="date" value="{{ date('Y-m-d') }}" name="borrowed_day" class="form-control" id="day"
                                    autofocus>
                         </div>
                     </div>
@@ -140,7 +189,15 @@
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         <span class="text-danger align-middle">
-
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         </span>
                     </div>
                 </div>

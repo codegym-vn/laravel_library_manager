@@ -15,7 +15,7 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-<div class="menu" style="margin-bottom: 20px">
+<div class="menu" style="margin-bottom: 100px">
     <header style="left: 0; top: 0; position: fixed; z-index: 10000; width: 100%">
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(39, 40, 130);">
             <a class="navbar-brand" href="{{ route('student_index') }}"><img src="{{ asset('image1/logo1.png') }}"
