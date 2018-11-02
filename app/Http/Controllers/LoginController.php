@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
-class AuthController extends Controller
+class LoginController extends Controller
 {
     /**
      * @param Request $request
@@ -21,7 +21,8 @@ class AuthController extends Controller
             'email.required' => 'Email không được phép để trống!',
             'email.email' => 'Email không đúng định dạng!',
             'password.required' => 'Password không được phép để trống!',
-            'password.min' => 'Password phải chứa ít nhất 6 kí tự!'];
+            'password.min' => 'Password phải chứa ít nhất 6 kí tự!'
+        ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
 
@@ -39,7 +40,8 @@ class AuthController extends Controller
                 foreach ($login as $user) {
                     if ($user->role == 1) {
                         return redirect()->route('books_index');
-                    } else if ($user->role == 2) {
+                    }
+                    else if ($user->role == 2) {
                         return redirect()->route('student_index');
                     }
                 }

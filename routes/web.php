@@ -15,12 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/login', function (){
-   return view('index');
+   return view('login');
 })->name('login');
 
-Route::post('/check-login', 'AuthController@login')->name('check_login');
+Route::post('/check-login', 'LoginController@login')->name('check_login');
 
-Route::get('/logout', 'HomeController@getLogout')->name('logout');
+Route::get('/logout', 'LogoutController@getLogout')->name('logout');
 
 
 Route::group(['middleware' => 'auth', 'timeout'], function (){
