@@ -133,7 +133,7 @@
                             <ul>
                                 <b><li style="text-align: center">Tác giả</li></b>
                                 @foreach($authors as $key => $author)
-                                    <a class="dropdown-item" href="{{ route('student_author_list', $author->id) }}"
+                                    <a class="dropdown-item" href="{{ route('student_author_book', $author->id) }}"
                                        style="color: black; font-size: 14px"><li>{{ $author->name }}</li></a>
                                 @endforeach
                             </ul>
