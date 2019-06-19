@@ -18,8 +18,8 @@
 <div class="menu" style="margin-bottom: 100px">
     <header style="left: 0; top: 0; position: fixed; z-index: 10000; width: 100%">
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(39, 40, 130);">
-            <a class="navbar-brand" href="{{ route('student_index') }}"><img src="{{ asset('image1/logo1.png') }}"
-                                                                             alt="logo" style="width: 70%"></a>
+            <a class="navbar-brand" href="{{ route('student_index') }}"><img src="{{ asset('image1/logo.jpg') }}"
+                                                                             alt="logo" style="width: 30%"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

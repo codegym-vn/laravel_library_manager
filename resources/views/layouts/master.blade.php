@@ -29,7 +29,7 @@
         <!-- Brand/logo -->
 
     <a class="navbar-brand col-11" href="#">
-        <img src="{{ asset('image1/logo1.png') }}" alt="logo" style="width:250px;">
+        <img src="{{ asset('image1/logo.jpg') }}" alt="logo" style="height:100px;">
     </a>
     <ul class="navbar-right col-1" style="padding-top: 10px">
         <li class="dropdown " style="list-style: none">

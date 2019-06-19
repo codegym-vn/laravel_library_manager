@@ -34,7 +34,6 @@ class LoginController extends Controller
 
             $email = $request->input('email');
             $password = $request->input('password');
-
             if (Auth::attempt(['email' => $email, 'password' => $password])) {
                 $login = User::where('email', $email)->get();
                 foreach ($login as $user) {

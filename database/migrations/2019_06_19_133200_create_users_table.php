@@ -18,13 +18,21 @@ class CreateUsersTable extends Migration
             $table->integer('role');
             $table->string('name');
             $table->string('email')->unique();
-            $table->integer('phone');
-            $table->string('class');
+            $table->integer('phone')->nullable();
+            $table->string('class')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
+
+        \App\User::create
+        ([
+            'role' => '1',
+            'name' => 'Administrator',
+            'email' => 'admin@gmail.vn',
+            'password' => Hash::make('12345678'),
+        ]);
     }
 
     /**
