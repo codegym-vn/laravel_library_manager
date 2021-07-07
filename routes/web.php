@@ -18,18 +18,18 @@ Route::get('/test', function (){
 });
 
 
-Route::prefix('auther')->group(function () {
-    Route::get('/index', 'AuthersController@index')->name('auther.index');
+Route::prefix('authers')->group(function () {
+    Route::get('/index', 'AuthersController@index')->name('auther_index');
 
-    Route::post('/create', 'AuthersController@create')->name('auther.create');
+    Route::get('/create', 'AuthersController@create')->name('auther_create');
 
-    Route::get('/create', 'AuthersController@store')->name('auther.store');
+    Route::post('/create', 'AuthersController@store')->name('auther_store');
 
-    Route::get('/{id}/edit', 'AuthersController@edit')->name('auther.edit');
+    Route::get('/{id}/edit', 'AuthersController@edit')->name('auther_edit');
 
-    Route::post('/{id}/edit', 'AuthersController@update')->name('auther.update');
+    Route::post('/{id}/edit', 'AuthersController@update')->name('auther_update');
 
-    Route::get('/{id}/destroy', 'AuthersController@destroy')->name('auther.destroy');
+    Route::get('/{id}/destroy', 'AuthersController@destroy')->name('auther_destroy');
 });
 
 Route::group(['prefix' => 'home'], function (){

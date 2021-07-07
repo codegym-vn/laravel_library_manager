@@ -32,7 +32,29 @@
                 <hr>
                 <div class="btn-group">
                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                        <a id="button1" class="btn bg-light">Quản lý các loại sách</a>
+                        <a id="button1" class="btn bg-light" style="width: 173px">Quản lý sách</a>
+                        <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu" style="width: 280px">
+                        <a class="dropdown-item" href="{{ route('categories_index') }}">List Categories</a>
+                        <a class="dropdown-item" href="{{ route('category_create') }}">Create</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                        <a id="button1" class="btn bg-light" style="width: 173px">Quản lý tác giả</a>
+                        <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu" style="width: 280px">
+                        <a class="dropdown-item" href="{{ route('auther_index') }}">List Authers</a>
+                        <a class="dropdown-item" href="{{ route('auther_create') }}">Create</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                        <a id="button1" class="btn bg-light" style="width: 173px">Quản lý thể loại</a>
                         <span class="caret"></span>
                     </button>
                     <div class="dropdown-menu" style="width: 235px">
